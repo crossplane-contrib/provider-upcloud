@@ -64,7 +64,7 @@ kind: Provider
 metadata:
   name: provider-upcloud
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/provider-upcloud:v0.2.0
+  package: xpkg.crossplane.io/crossplane-contrib/provider-upcloud:v1.0.0
 ```
 
 ### 2. Create a credentials Secret
