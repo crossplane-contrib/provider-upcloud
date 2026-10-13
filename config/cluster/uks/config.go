@@ -16,6 +16,21 @@ func Configure(p *config.Provider) {
 		r.References["network"] = config.Reference{
 			TerraformName: "upcloud_network",
 		}
+		// Publish the kubeconfig under the key provider-kubernetes and
+		// provider-helm expect, in addition to upjet's
+		// attribute.kubeconfig.kubeconfig. Upstream only fills the attribute
+		// when fetch_kubeconfig is true.
+		r.Sensitive.AdditionalConnectionDetailsFn = func(attr map[string]any) (map[string][]byte, error) {
+			details, ok := attr["kubeconfig"].(map[string]any)
+			if !ok {
+				return nil, nil
+			}
+			kubeconfig, ok := details["kubeconfig"].(string)
+			if !ok || kubeconfig == "" {
+				return nil, nil
+			}
+			return map[string][]byte{"kubeconfig": []byte(kubeconfig)}, nil
+		}
 	})
 
 	p.AddResourceConfigurator("upcloud_kubernetes_node_group", func(r *config.Resource) {

@@ -10,6 +10,7 @@ spec:
   forProvider:
     name: uks-example
     zone: fi-hel2
+    fetchKubeconfig: true
     controlPlaneIpFilter:
       - 0.0.0.0/0
     networkSelector:
@@ -17,6 +18,9 @@ spec:
         testing.upbound.io/example-name: uks-example-network
   providerConfigRef:
     name: default
+  writeConnectionSecretToRef:
+    name: uks-example-kubeconfig
+    namespace: crossplane-system
 
 ---
 apiVersion: network.upcloud.com/v1alpha1

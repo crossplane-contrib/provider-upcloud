@@ -11,6 +11,7 @@ spec:
   forProvider:
     name: uks-example
     zone: fi-hel2
+    fetchKubeconfig: true
     controlPlaneIpFilter:
       - 0.0.0.0/0
     networkSelector:
@@ -19,6 +20,8 @@ spec:
   providerConfigRef:
     kind: ClusterProviderConfig
     name: default
+  writeConnectionSecretToRef:
+    name: uks-example-kubeconfig
 
 ---
 apiVersion: network.m.upcloud.com/v1alpha1
