@@ -64,7 +64,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   labels:
@@ -202,9 +202,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service
@@ -901,7 +921,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   labels:
@@ -1039,9 +1059,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service
@@ -1786,10 +1826,6 @@ spec:
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
                 || (has(self.initProvider) && has(self.initProvider.name))'
-            - message: spec.forProvider.plan is a required parameter
-              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.plan)
-                || (has(self.initProvider) && has(self.initProvider.plan))'
             - message: spec.forProvider.title is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.title)
@@ -1806,7 +1842,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   components:
@@ -1919,9 +1955,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service

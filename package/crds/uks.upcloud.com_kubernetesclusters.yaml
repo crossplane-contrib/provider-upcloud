@@ -82,6 +82,11 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  fetchKubeconfig:
+                    description: |-
+                      (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+                      Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+                    type: boolean
                   labels:
                     additionalProperties:
                       type: string
@@ -228,6 +233,11 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  fetchKubeconfig:
+                    description: |-
+                      (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+                      Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+                    type: boolean
                   labels:
                     additionalProperties:
                       type: string
@@ -465,9 +475,35 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  fetchKubeconfig:
+                    description: |-
+                      (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+                      Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+                    type: boolean
                   id:
                     description: (String) UUID of the cluster.
                     type: string
+                  kubeconfig:
+                    description: (Attributes) Cluster kubeconfig and connection details.
+                      Set only when fetch_kubeconfig is true. (see below for nested
+                      schema)
+                    properties:
+                      clientCertificate:
+                        description: |-
+                          (String) TLS authentication client certificate, encoded (PEM).
+                          TLS authentication client certificate, encoded (PEM).
+                        type: string
+                      clusterCaCertificate:
+                        description: |-
+                          (String) TLS authentication root certificate bundle, encoded (PEM).
+                          TLS authentication root certificate bundle, encoded (PEM).
+                        type: string
+                      host:
+                        description: |-
+                          (String) Hostname of the cluster API. Defined as URI.
+                          Hostname of the cluster API. Defined as URI.
+                        type: string
+                    type: object
                   labels:
                     additionalProperties:
                       type: string

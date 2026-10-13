@@ -13,12 +13,37 @@ import (
 	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
+type KubeconfigInitParameters struct {
+}
+
+type KubeconfigObservation struct {
+
+	// (String) TLS authentication client certificate, encoded (PEM).
+	// TLS authentication client certificate, encoded (PEM).
+	ClientCertificate *string `json:"clientCertificate,omitempty" tf:"client_certificate,omitempty"`
+
+	// (String) TLS authentication root certificate bundle, encoded (PEM).
+	// TLS authentication root certificate bundle, encoded (PEM).
+	ClusterCACertificate *string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
+
+	// (String) Hostname of the cluster API. Defined as URI.
+	// Hostname of the cluster API. Defined as URI.
+	Host *string `json:"host,omitempty" tf:"host,omitempty"`
+}
+
+type KubeconfigParameters struct {
+}
+
 type KubernetesClusterInitParameters struct {
 
 	// (Set of String) IP addresses or IP ranges in CIDR format which are allowed to access the cluster control plane. To allow access from any source, use ["0.0.0.0/0"]. To deny access from all sources, use []. Values set here do not restrict access to node groups or exposed Kubernetes services.
 	// IP addresses or IP ranges in CIDR format which are allowed to access the cluster control plane. To allow access from any source, use `["0.0.0.0/0"]`. To deny access from all sources, use `[]`. Values set here do not restrict access to node groups or exposed Kubernetes services.
 	// +listType=set
 	ControlPlaneIPFilter []*string `json:"controlPlaneIpFilter,omitempty" tf:"control_plane_ip_filter,omitempty"`
+
+	// (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+	// Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+	FetchKubeconfig *bool `json:"fetchKubeconfig,omitempty" tf:"fetch_kubeconfig,omitempty"`
 
 	// value pairs to classify the cluster.
 	// User defined key-value pairs to classify the cluster.
@@ -76,8 +101,15 @@ type KubernetesClusterObservation struct {
 	// +listType=set
 	ControlPlaneIPFilter []*string `json:"controlPlaneIpFilter,omitempty" tf:"control_plane_ip_filter,omitempty"`
 
+	// (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+	// Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+	FetchKubeconfig *bool `json:"fetchKubeconfig,omitempty" tf:"fetch_kubeconfig,omitempty"`
+
 	// (String) UUID of the cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// (Attributes) Cluster kubeconfig and connection details. Set only when fetch_kubeconfig is true. (see below for nested schema)
+	Kubeconfig *KubeconfigObservation `json:"kubeconfig,omitempty" tf:"kubeconfig,omitempty"`
 
 	// value pairs to classify the cluster.
 	// User defined key-value pairs to classify the cluster.
@@ -138,6 +170,11 @@ type KubernetesClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	ControlPlaneIPFilter []*string `json:"controlPlaneIpFilter,omitempty" tf:"control_plane_ip_filter,omitempty"`
+
+	// (Boolean) Fetch the cluster kubeconfig and connection details into the kubeconfig attribute. Consider using the upcloud_kubernetes_cluster ephemeral resource instead to keep the credentials out of the state. Defaults to false.
+	// Fetch the cluster kubeconfig and connection details into the `kubeconfig` attribute. Consider using the `upcloud_kubernetes_cluster` ephemeral resource instead to keep the credentials out of the state. Defaults to `false`.
+	// +kubebuilder:validation:Optional
+	FetchKubeconfig *bool `json:"fetchKubeconfig,omitempty" tf:"fetch_kubeconfig,omitempty"`
 
 	// value pairs to classify the cluster.
 	// User defined key-value pairs to classify the cluster.

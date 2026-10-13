@@ -1674,6 +1674,26 @@ func (in *ManagedDatabaseMysqlInitParameters) DeepCopyInto(out *ManagedDatabaseM
 		*out = new(string)
 		**out = **in
 	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Powered != nil {
 		in, out := &in.Powered, &out.Powered
 		*out = new(bool)
@@ -1813,6 +1833,26 @@ func (in *ManagedDatabaseMysqlObservation) DeepCopyInto(out *ManagedDatabaseMysq
 		*out = new(string)
 		**out = **in
 	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Powered != nil {
 		in, out := &in.Powered, &out.Powered
 		*out = new(bool)
@@ -1929,6 +1969,26 @@ func (in *ManagedDatabaseMysqlParameters) DeepCopyInto(out *ManagedDatabaseMysql
 	if in.Plan != nil {
 		in, out := &in.Plan, &out.Plan
 		*out = new(string)
+		**out = **in
+	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
 		**out = **in
 	}
 	if in.Powered != nil {
@@ -2912,6 +2972,21 @@ func (in *ManagedDatabaseOpensearchPropertiesInitParameters) DeepCopyInto(out *M
 		*out = new(bool)
 		**out = **in
 	}
+	if in.KnnCacheItemExpiryEnabled != nil {
+		in, out := &in.KnnCacheItemExpiryEnabled, &out.KnnCacheItemExpiryEnabled
+		*out = new(bool)
+		**out = **in
+	}
+	if in.KnnCacheItemExpiryMinutes != nil {
+		in, out := &in.KnnCacheItemExpiryMinutes, &out.KnnCacheItemExpiryMinutes
+		*out = new(float64)
+		**out = **in
+	}
+	if in.KnnCircuitBreakerUnsetPercentage != nil {
+		in, out := &in.KnnCircuitBreakerUnsetPercentage, &out.KnnCircuitBreakerUnsetPercentage
+		*out = new(float64)
+		**out = **in
+	}
 	if in.KnnMemoryCircuitBreakerEnabled != nil {
 		in, out := &in.KnnMemoryCircuitBreakerEnabled, &out.KnnMemoryCircuitBreakerEnabled
 		*out = new(bool)
@@ -3376,6 +3451,21 @@ func (in *ManagedDatabaseOpensearchPropertiesObservation) DeepCopyInto(out *Mana
 	if in.KeepIndexRefreshInterval != nil {
 		in, out := &in.KeepIndexRefreshInterval, &out.KeepIndexRefreshInterval
 		*out = new(bool)
+		**out = **in
+	}
+	if in.KnnCacheItemExpiryEnabled != nil {
+		in, out := &in.KnnCacheItemExpiryEnabled, &out.KnnCacheItemExpiryEnabled
+		*out = new(bool)
+		**out = **in
+	}
+	if in.KnnCacheItemExpiryMinutes != nil {
+		in, out := &in.KnnCacheItemExpiryMinutes, &out.KnnCacheItemExpiryMinutes
+		*out = new(float64)
+		**out = **in
+	}
+	if in.KnnCircuitBreakerUnsetPercentage != nil {
+		in, out := &in.KnnCircuitBreakerUnsetPercentage, &out.KnnCircuitBreakerUnsetPercentage
+		*out = new(float64)
 		**out = **in
 	}
 	if in.KnnMemoryCircuitBreakerEnabled != nil {
@@ -3849,6 +3939,21 @@ func (in *ManagedDatabaseOpensearchPropertiesParameters) DeepCopyInto(out *Manag
 		*out = new(bool)
 		**out = **in
 	}
+	if in.KnnCacheItemExpiryEnabled != nil {
+		in, out := &in.KnnCacheItemExpiryEnabled, &out.KnnCacheItemExpiryEnabled
+		*out = new(bool)
+		**out = **in
+	}
+	if in.KnnCacheItemExpiryMinutes != nil {
+		in, out := &in.KnnCacheItemExpiryMinutes, &out.KnnCacheItemExpiryMinutes
+		*out = new(float64)
+		**out = **in
+	}
+	if in.KnnCircuitBreakerUnsetPercentage != nil {
+		in, out := &in.KnnCircuitBreakerUnsetPercentage, &out.KnnCircuitBreakerUnsetPercentage
+		*out = new(float64)
+		**out = **in
+	}
 	if in.KnnMemoryCircuitBreakerEnabled != nil {
 		in, out := &in.KnnMemoryCircuitBreakerEnabled, &out.KnnMemoryCircuitBreakerEnabled
 		*out = new(bool)
@@ -4251,6 +4356,26 @@ func (in *ManagedDatabasePostgresqlInitParameters) DeepCopyInto(out *ManagedData
 		*out = new(string)
 		**out = **in
 	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Powered != nil {
 		in, out := &in.Powered, &out.Powered
 		*out = new(bool)
@@ -4575,6 +4700,26 @@ func (in *ManagedDatabasePostgresqlObservation) DeepCopyInto(out *ManagedDatabas
 		*out = new(string)
 		**out = **in
 	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Powered != nil {
 		in, out := &in.Powered, &out.Powered
 		*out = new(bool)
@@ -4696,6 +4841,26 @@ func (in *ManagedDatabasePostgresqlParameters) DeepCopyInto(out *ManagedDatabase
 	if in.Plan != nil {
 		in, out := &in.Plan, &out.Plan
 		*out = new(string)
+		**out = **in
+	}
+	if in.PlanBackups != nil {
+		in, out := &in.PlanBackups, &out.PlanBackups
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanCompute != nil {
+		in, out := &in.PlanCompute, &out.PlanCompute
+		*out = new(string)
+		**out = **in
+	}
+	if in.PlanNodeCount != nil {
+		in, out := &in.PlanNodeCount, &out.PlanNodeCount
+		*out = new(float64)
+		**out = **in
+	}
+	if in.PlanStorageGib != nil {
+		in, out := &in.PlanStorageGib, &out.PlanStorageGib
+		*out = new(float64)
 		**out = **in
 	}
 	if in.Powered != nil {
@@ -9713,6 +9878,26 @@ func (in *PropertiesInitParameters) DeepCopyInto(out *PropertiesInitParameters) 
 		*out = new(float64)
 		**out = **in
 	}
+	if in.InnodbMaxDirtyPagesPct != nil {
+		in, out := &in.InnodbMaxDirtyPagesPct, &out.InnodbMaxDirtyPagesPct
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxDirtyPagesPctLwm != nil {
+		in, out := &in.InnodbMaxDirtyPagesPctLwm, &out.InnodbMaxDirtyPagesPctLwm
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLag != nil {
+		in, out := &in.InnodbMaxPurgeLag, &out.InnodbMaxPurgeLag
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLagDelay != nil {
+		in, out := &in.InnodbMaxPurgeLagDelay, &out.InnodbMaxPurgeLagDelay
+		*out = new(float64)
+		**out = **in
+	}
 	if in.InnodbOnlineAlterLogMaxSize != nil {
 		in, out := &in.InnodbOnlineAlterLogMaxSize, &out.InnodbOnlineAlterLogMaxSize
 		*out = new(float64)
@@ -10244,6 +10429,26 @@ func (in *PropertiesObservation) DeepCopyInto(out *PropertiesObservation) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.InnodbMaxDirtyPagesPct != nil {
+		in, out := &in.InnodbMaxDirtyPagesPct, &out.InnodbMaxDirtyPagesPct
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxDirtyPagesPctLwm != nil {
+		in, out := &in.InnodbMaxDirtyPagesPctLwm, &out.InnodbMaxDirtyPagesPctLwm
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLag != nil {
+		in, out := &in.InnodbMaxPurgeLag, &out.InnodbMaxPurgeLag
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLagDelay != nil {
+		in, out := &in.InnodbMaxPurgeLagDelay, &out.InnodbMaxPurgeLagDelay
+		*out = new(float64)
+		**out = **in
+	}
 	if in.InnodbOnlineAlterLogMaxSize != nil {
 		in, out := &in.InnodbOnlineAlterLogMaxSize, &out.InnodbOnlineAlterLogMaxSize
 		*out = new(float64)
@@ -10602,6 +10807,26 @@ func (in *PropertiesParameters) DeepCopyInto(out *PropertiesParameters) {
 	}
 	if in.InnodbLogBufferSize != nil {
 		in, out := &in.InnodbLogBufferSize, &out.InnodbLogBufferSize
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxDirtyPagesPct != nil {
+		in, out := &in.InnodbMaxDirtyPagesPct, &out.InnodbMaxDirtyPagesPct
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxDirtyPagesPctLwm != nil {
+		in, out := &in.InnodbMaxDirtyPagesPctLwm, &out.InnodbMaxDirtyPagesPctLwm
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLag != nil {
+		in, out := &in.InnodbMaxPurgeLag, &out.InnodbMaxPurgeLag
+		*out = new(float64)
+		**out = **in
+	}
+	if in.InnodbMaxPurgeLagDelay != nil {
+		in, out := &in.InnodbMaxPurgeLagDelay, &out.InnodbMaxPurgeLagDelay
 		*out = new(float64)
 		**out = **in
 	}

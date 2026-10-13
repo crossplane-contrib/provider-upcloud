@@ -1153,6 +1153,18 @@ type ManagedDatabaseOpensearchPropertiesInitParameters struct {
 	// Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `json:"keepIndexRefreshInterval,omitempty" tf:"keep_index_refresh_interval,omitempty"`
 
+	// (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled *bool `json:"knnCacheItemExpiryEnabled,omitempty" tf:"knn_cache_item_expiry_enabled,omitempty"`
+
+	// (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	KnnCacheItemExpiryMinutes *float64 `json:"knnCacheItemExpiryMinutes,omitempty" tf:"knn_cache_item_expiry_minutes,omitempty"`
+
+	// (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage *float64 `json:"knnCircuitBreakerUnsetPercentage,omitempty" tf:"knn_circuit_breaker_unset_percentage,omitempty"`
+
 	// (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled *bool `json:"knnMemoryCircuitBreakerEnabled,omitempty" tf:"knn_memory_circuit_breaker_enabled,omitempty"`
@@ -1483,6 +1495,18 @@ type ManagedDatabaseOpensearchPropertiesObservation struct {
 	// (Boolean) Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	// Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `json:"keepIndexRefreshInterval,omitempty" tf:"keep_index_refresh_interval,omitempty"`
+
+	// (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled *bool `json:"knnCacheItemExpiryEnabled,omitempty" tf:"knn_cache_item_expiry_enabled,omitempty"`
+
+	// (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	KnnCacheItemExpiryMinutes *float64 `json:"knnCacheItemExpiryMinutes,omitempty" tf:"knn_cache_item_expiry_minutes,omitempty"`
+
+	// (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage *float64 `json:"knnCircuitBreakerUnsetPercentage,omitempty" tf:"knn_circuit_breaker_unset_percentage,omitempty"`
 
 	// (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
@@ -1863,6 +1887,21 @@ type ManagedDatabaseOpensearchPropertiesParameters struct {
 	// Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	// +kubebuilder:validation:Optional
 	KeepIndexRefreshInterval *bool `json:"keepIndexRefreshInterval,omitempty" tf:"keep_index_refresh_interval,omitempty"`
+
+	// (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	// +kubebuilder:validation:Optional
+	KnnCacheItemExpiryEnabled *bool `json:"knnCacheItemExpiryEnabled,omitempty" tf:"knn_cache_item_expiry_enabled,omitempty"`
+
+	// (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+	// +kubebuilder:validation:Optional
+	KnnCacheItemExpiryMinutes *float64 `json:"knnCacheItemExpiryMinutes,omitempty" tf:"knn_cache_item_expiry_minutes,omitempty"`
+
+	// (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	// +kubebuilder:validation:Optional
+	KnnCircuitBreakerUnsetPercentage *float64 `json:"knnCircuitBreakerUnsetPercentage,omitempty" tf:"knn_circuit_breaker_unset_percentage,omitempty"`
 
 	// (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.
 	// Enable or disable KNN memory circuit breaker. Defaults to true.

@@ -44,7 +44,7 @@ type ComponentsParameters struct {
 
 type ManagedDatabaseMysqlInitParameters struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
@@ -69,9 +69,25 @@ type ManagedDatabaseMysqlInitParameters struct {
 	// Private networks attached to the managed database
 	Network []NetworkInitParameters `json:"network,omitempty" tf:"network,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -96,7 +112,7 @@ type ManagedDatabaseMysqlInitParameters struct {
 
 type ManagedDatabaseMysqlObservation struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
@@ -130,9 +146,25 @@ type ManagedDatabaseMysqlObservation struct {
 	// (Attributes List) Information about nodes providing the managed service (see below for nested schema)
 	NodeStates []NodeStatesObservation `json:"nodeStates,omitempty" tf:"node_states,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -181,7 +213,7 @@ type ManagedDatabaseMysqlObservation struct {
 
 type ManagedDatabaseMysqlParameters struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// +kubebuilder:validation:Optional
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
@@ -212,10 +244,30 @@ type ManagedDatabaseMysqlParameters struct {
 	// +kubebuilder:validation:Optional
 	Network []NetworkParameters `json:"network,omitempty" tf:"network,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
 	// +kubebuilder:validation:Optional
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	// +kubebuilder:validation:Optional
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// +kubebuilder:validation:Optional
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	// +kubebuilder:validation:Optional
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	// +kubebuilder:validation:Optional
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -644,6 +696,22 @@ type PropertiesInitParameters struct {
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *float64 `json:"innodbLogBufferSize,omitempty" tf:"innodb_log_buffer_size,omitempty"`
 
+	// (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	InnodbMaxDirtyPagesPct *float64 `json:"innodbMaxDirtyPagesPct,omitempty" tf:"innodb_max_dirty_pages_pct,omitempty"`
+
+	// flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	InnodbMaxDirtyPagesPctLwm *float64 `json:"innodbMaxDirtyPagesPctLwm,omitempty" tf:"innodb_max_dirty_pages_pct_lwm,omitempty"`
+
+	// (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag *float64 `json:"innodbMaxPurgeLag,omitempty" tf:"innodb_max_purge_lag,omitempty"`
+
+	// row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	// Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
+
 	// (Number) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *float64 `json:"innodbOnlineAlterLogMaxSize,omitempty" tf:"innodb_online_alter_log_max_size,omitempty"`
@@ -914,6 +982,22 @@ type PropertiesObservation struct {
 	// (Number) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *float64 `json:"innodbLogBufferSize,omitempty" tf:"innodb_log_buffer_size,omitempty"`
+
+	// (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	InnodbMaxDirtyPagesPct *float64 `json:"innodbMaxDirtyPagesPct,omitempty" tf:"innodb_max_dirty_pages_pct,omitempty"`
+
+	// flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	InnodbMaxDirtyPagesPctLwm *float64 `json:"innodbMaxDirtyPagesPctLwm,omitempty" tf:"innodb_max_dirty_pages_pct_lwm,omitempty"`
+
+	// (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag *float64 `json:"innodbMaxPurgeLag,omitempty" tf:"innodb_max_purge_lag,omitempty"`
+
+	// row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	// Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
 
 	// (Number) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -1219,6 +1303,26 @@ type PropertiesParameters struct {
 	// +kubebuilder:validation:Optional
 	InnodbLogBufferSize *float64 `json:"innodbLogBufferSize,omitempty" tf:"innodb_log_buffer_size,omitempty"`
 
+	// (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+	// +kubebuilder:validation:Optional
+	InnodbMaxDirtyPagesPct *float64 `json:"innodbMaxDirtyPagesPct,omitempty" tf:"innodb_max_dirty_pages_pct,omitempty"`
+
+	// flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+	// +kubebuilder:validation:Optional
+	InnodbMaxDirtyPagesPctLwm *float64 `json:"innodbMaxDirtyPagesPctLwm,omitempty" tf:"innodb_max_dirty_pages_pct_lwm,omitempty"`
+
+	// (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	// +kubebuilder:validation:Optional
+	InnodbMaxPurgeLag *float64 `json:"innodbMaxPurgeLag,omitempty" tf:"innodb_max_purge_lag,omitempty"`
+
+	// row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	// Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+	// +kubebuilder:validation:Optional
+	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
+
 	// (Number) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	// +kubebuilder:validation:Optional
@@ -1452,7 +1556,6 @@ type ManagedDatabaseMysql struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.plan) || (has(self.initProvider) && has(self.initProvider.plan))",message="spec.forProvider.plan is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.title) || (has(self.initProvider) && has(self.initProvider.title))",message="spec.forProvider.title is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.zone) || (has(self.initProvider) && has(self.initProvider.zone))",message="spec.forProvider.zone is a required parameter"
 	Spec   ManagedDatabaseMysqlSpec   `json:"spec"`

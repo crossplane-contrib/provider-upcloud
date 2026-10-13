@@ -13,7 +13,7 @@ import (
 
 // terraformPluginSDKExternalNameConfigs contains all external name
 // configurations for the resources the UpCloud Terraform provider still
-// implements with terraform-plugin-sdk/v2 (as of v5.45.0 only
+// implements with terraform-plugin-sdk/v2 (as of v5.47.0 only
 // upcloud_gateway_connection and upcloud_gateway_connection_tunnel). A
 // resource listed here is generated with the in-process SDK client and needs
 // the SDK provider meta configured in internal/clients.

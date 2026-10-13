@@ -44,7 +44,7 @@ type ManagedDatabasePostgresqlComponentsParameters struct {
 
 type ManagedDatabasePostgresqlInitParameters struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
@@ -69,9 +69,25 @@ type ManagedDatabasePostgresqlInitParameters struct {
 	// Private networks attached to the managed database
 	Network []ManagedDatabasePostgresqlNetworkInitParameters `json:"network,omitempty" tf:"network,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -196,7 +212,7 @@ type ManagedDatabasePostgresqlNodeStatesParameters struct {
 
 type ManagedDatabasePostgresqlObservation struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
@@ -230,9 +246,25 @@ type ManagedDatabasePostgresqlObservation struct {
 	// (Attributes List) Information about nodes providing the managed service (see below for nested schema)
 	NodeStates []ManagedDatabasePostgresqlNodeStatesObservation `json:"nodeStates,omitempty" tf:"node_states,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -285,7 +317,7 @@ type ManagedDatabasePostgresqlObservation struct {
 
 type ManagedDatabasePostgresqlParameters struct {
 
-	// (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+	// (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// +kubebuilder:validation:Optional
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
@@ -316,10 +348,30 @@ type ManagedDatabasePostgresqlParameters struct {
 	// +kubebuilder:validation:Optional
 	Network []ManagedDatabasePostgresqlNetworkParameters `json:"network,omitempty" tf:"network,omitempty"`
 
-	// (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
+	// (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans pg.
 	// Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans pg`.
 	// +kubebuilder:validation:Optional
 	Plan *string `json:"plan,omitempty" tf:"plan,omitempty"`
+
+	// (String) Backup tier for the database plan.
+	// Backup tier for the database plan.
+	// +kubebuilder:validation:Optional
+	PlanBackups *string `json:"planBackups,omitempty" tf:"plan_backups,omitempty"`
+
+	// (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+	// +kubebuilder:validation:Optional
+	PlanCompute *string `json:"planCompute,omitempty" tf:"plan_compute,omitempty"`
+
+	// (Number) Number of nodes in the database plan.
+	// Number of nodes in the database plan.
+	// +kubebuilder:validation:Optional
+	PlanNodeCount *float64 `json:"planNodeCount,omitempty" tf:"plan_node_count,omitempty"`
+
+	// (Number) Total storage per node in GiB.
+	// Total storage per node in GiB.
+	// +kubebuilder:validation:Optional
+	PlanStorageGib *float64 `json:"planStorageGib,omitempty" tf:"plan_storage_gib,omitempty"`
 
 	// (Boolean) The administrative power state of the service
 	// The administrative power state of the service
@@ -2032,7 +2084,6 @@ type ManagedDatabasePostgresql struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.plan) || (has(self.initProvider) && has(self.initProvider.plan))",message="spec.forProvider.plan is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.title) || (has(self.initProvider) && has(self.initProvider.title))",message="spec.forProvider.title is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.zone) || (has(self.initProvider) && has(self.initProvider.zone))",message="spec.forProvider.zone is a required parameter"
 	Spec   ManagedDatabasePostgresqlSpec   `json:"spec"`

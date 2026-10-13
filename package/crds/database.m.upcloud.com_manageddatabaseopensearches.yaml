@@ -658,6 +658,21 @@ spec:
                           (Boolean) Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                           Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                         type: boolean
+                      knnCacheItemExpiryEnabled:
+                        description: |-
+                          (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                          Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                        type: boolean
+                      knnCacheItemExpiryMinutes:
+                        description: |-
+                          (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                          If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                        type: number
+                      knnCircuitBreakerUnsetPercentage:
+                        description: |-
+                          (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                          The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                        type: number
                       knnMemoryCircuitBreakerEnabled:
                         description: |-
                           (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.
@@ -1933,6 +1948,21 @@ spec:
                           (Boolean) Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                           Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                         type: boolean
+                      knnCacheItemExpiryEnabled:
+                        description: |-
+                          (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                          Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                        type: boolean
+                      knnCacheItemExpiryMinutes:
+                        description: |-
+                          (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                          If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                        type: number
+                      knnCircuitBreakerUnsetPercentage:
+                        description: |-
+                          (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                          The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                        type: number
                       knnMemoryCircuitBreakerEnabled:
                         description: |-
                           (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.
@@ -3242,6 +3272,21 @@ spec:
                           (Boolean) Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                           Don't reset index.refresh_interval to the default value. Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
                         type: boolean
+                      knnCacheItemExpiryEnabled:
+                        description: |-
+                          (Boolean) Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                          Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+                        type: boolean
+                      knnCacheItemExpiryMinutes:
+                        description: |-
+                          (Number) If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                          If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted.
+                        type: number
+                      knnCircuitBreakerUnsetPercentage:
+                        description: |-
+                          (Number) The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                          The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+                        type: number
                       knnMemoryCircuitBreakerEnabled:
                         description: |-
                           (Boolean) Enable or disable KNN memory circuit breaker. Defaults to true.

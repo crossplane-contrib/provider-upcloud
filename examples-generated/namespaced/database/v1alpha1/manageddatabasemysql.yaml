@@ -10,6 +10,9 @@ metadata:
 spec:
   forProvider:
     name: mysql-1
-    plan: 1x1xCPU-2GB-25GB
+    planBackups: regular
+    planCompute: rdb.standard.2CPU-8GB
+    planNodeCount: 2
+    planStorageGib: 120
     title: mysql-1-example-1
     zone: fi-hel1

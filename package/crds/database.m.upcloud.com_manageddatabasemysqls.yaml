@@ -63,7 +63,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   labels:
@@ -201,9 +201,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service
@@ -362,6 +382,26 @@ spec:
                         description: |-
                           (Number) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
                           The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
+                        type: number
+                      innodbMaxDirtyPagesPct:
+                        description: |-
+                          (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                        type: number
+                      innodbMaxDirtyPagesPctLwm:
+                        description: |-
+                          flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                        type: number
+                      innodbMaxPurgeLag:
+                        description: |-
+                          (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                          Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                        type: number
+                      innodbMaxPurgeLagDelay:
+                        description: |-
+                          row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+                          Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
                         type: number
                       innodbOnlineAlterLogMaxSize:
                         description: |-
@@ -673,7 +713,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   labels:
@@ -811,9 +851,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service
@@ -972,6 +1032,26 @@ spec:
                         description: |-
                           (Number) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
                           The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
+                        type: number
+                      innodbMaxDirtyPagesPct:
+                        description: |-
+                          (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                        type: number
+                      innodbMaxDirtyPagesPctLwm:
+                        description: |-
+                          flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                        type: number
+                      innodbMaxPurgeLag:
+                        description: |-
+                          (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                          Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                        type: number
+                      innodbMaxPurgeLagDelay:
+                        description: |-
+                          row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+                          Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
                         type: number
                       innodbOnlineAlterLogMaxSize:
                         description: |-
@@ -1331,10 +1411,6 @@ spec:
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
                 || (has(self.initProvider) && has(self.initProvider.name))'
-            - message: spec.forProvider.plan is a required parameter
-              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.plan)
-                || (has(self.initProvider) && has(self.initProvider.plan))'
             - message: spec.forProvider.title is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.title)
@@ -1351,7 +1427,7 @@ spec:
                 properties:
                   additionalDiskSpaceGib:
                     description: |-
-                      (Number) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
+                      (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
                   components:
@@ -1464,9 +1540,29 @@ spec:
                     type: array
                   plan:
                     description: |-
-                      (String) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
+                      (String, Deprecated) Service plan to use. This determines how much resources the instance will have. You can list available plans with upctl database plans mysql.
                       Service plan to use. This determines how much resources the instance will have. You can list available plans with `upctl database plans mysql`.
                     type: string
+                  planBackups:
+                    description: |-
+                      (String) Backup tier for the database plan.
+                      Backup tier for the database plan.
+                    type: string
+                  planCompute:
+                    description: |-
+                      (String) Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                      Compute shape combining family, CPU, and memory, as listed in the database plan catalog.
+                    type: string
+                  planNodeCount:
+                    description: |-
+                      (Number) Number of nodes in the database plan.
+                      Number of nodes in the database plan.
+                    type: number
+                  planStorageGib:
+                    description: |-
+                      (Number) Total storage per node in GiB.
+                      Total storage per node in GiB.
+                    type: number
                   powered:
                     description: |-
                       (Boolean) The administrative power state of the service
@@ -1616,6 +1712,26 @@ spec:
                         description: |-
                           (Number) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
                           The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
+                        type: number
+                      innodbMaxDirtyPagesPct:
+                        description: |-
+                          (Number) Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90.
+                        type: number
+                      innodbMaxDirtyPagesPctLwm:
+                        description: |-
+                          flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                          Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10.
+                        type: number
+                      innodbMaxPurgeLag:
+                        description: |-
+                          (Number) Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                          Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+                        type: number
+                      innodbMaxPurgeLagDelay:
+                        description: |-
+                          row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
+                          Cap in microseconds on the per-row delay innodb_max_purge_lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb_max_purge_lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0.
                         type: number
                       innodbOnlineAlterLogMaxSize:
                         description: |-
