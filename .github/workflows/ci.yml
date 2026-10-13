@@ -48,10 +48,13 @@ jobs:
           MODIFIED_CRD_LIST: ${{ steps.modified-crds.outputs.all_changed_files }}
         run: |
           make crddiff
-      - name: Report native schema version changes
-        if: github.event_name == 'pull_request'
-        run: |
-          make schema-version-diff
+      # Commented out during the initial release, as in provider-upjet-nebius:
+      # the pull request checkout has no local ref of the base branch, so
+      # `git cat-file -p main:...` fails with "invalid object name 'main'".
+      # - name: Report native schema version changes
+      #   if: github.event_name == 'pull_request'
+      #   run: |
+      #     make schema-version-diff
 
 
   lint:
