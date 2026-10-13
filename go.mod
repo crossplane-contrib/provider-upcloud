@@ -1,6 +1,6 @@
 module github.com/crossplane-contrib/provider-upcloud
 
-go 1.26.8
+go 1.27.2
 
 tool golang.org/x/tools/cmd/goimports
 
