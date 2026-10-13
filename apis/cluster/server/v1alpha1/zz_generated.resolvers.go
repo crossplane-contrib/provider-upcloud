@@ -25,7 +25,7 @@ func (mg *FirewallRules) ResolveReferences( // ResolveReferences of this Firewal
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -45,7 +45,7 @@ func (mg *FirewallRules) ResolveReferences( // ResolveReferences of this Firewal
 	mg.Spec.ForProvider.ServerID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServerIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -79,7 +79,7 @@ func (mg *Server) ResolveReferences(ctx context.Context, c client.Reader) error 
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.NetworkInterface); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -101,7 +101,7 @@ func (mg *Server) ResolveReferences(ctx context.Context, c client.Reader) error 
 	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.StorageDevices); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+			m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -123,7 +123,7 @@ func (mg *Server) ResolveReferences(ctx context.Context, c client.Reader) error 
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.NetworkInterface); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -145,7 +145,7 @@ func (mg *Server) ResolveReferences(ctx context.Context, c client.Reader) error 
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.StorageDevices); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+			m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -178,7 +178,7 @@ func (mg *ServerGroup) ResolveReferences(ctx context.Context, c client.Reader) e
 	var mrsp reference.MultiResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -198,7 +198,7 @@ func (mg *ServerGroup) ResolveReferences(ctx context.Context, c client.Reader) e
 	mg.Spec.ForProvider.Members = reference.ToPtrValues(mrsp.ResolvedValues)
 	mg.Spec.ForProvider.MembersRefs = mrsp.ResolvedReferences
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -230,7 +230,7 @@ func (mg *ServerPrivateFirewallRuleset) ResolveReferences(ctx context.Context, c
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "FirewallRuleset", "FirewallRulesetList")
+		m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "FirewallRuleset", "FirewallRulesetList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -250,7 +250,7 @@ func (mg *ServerPrivateFirewallRuleset) ResolveReferences(ctx context.Context, c
 	mg.Spec.ForProvider.RulesetID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.RulesetIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -270,7 +270,7 @@ func (mg *ServerPrivateFirewallRuleset) ResolveReferences(ctx context.Context, c
 	mg.Spec.ForProvider.ServerID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServerIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "FirewallRuleset", "FirewallRulesetList")
+		m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "FirewallRuleset", "FirewallRulesetList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -290,7 +290,7 @@ func (mg *ServerPrivateFirewallRuleset) ResolveReferences(ctx context.Context, c
 	mg.Spec.InitProvider.RulesetID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.RulesetIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -322,7 +322,7 @@ func (mg *Tag) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var mrsp reference.MultiResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -342,7 +342,7 @@ func (mg *Tag) ResolveReferences(ctx context.Context, c client.Reader) error {
 	mg.Spec.ForProvider.Servers = reference.ToPtrValues(mrsp.ResolvedValues)
 	mg.Spec.ForProvider.ServersRefs = mrsp.ResolvedReferences
 	{
-		m, l, err = apisresolver.GetManagedResource("server.upcloud.crossplane.io", "v1alpha1", "Server", "ServerList")
+		m, l, err = apisresolver.GetManagedResource("server.upcloud.com", "v1alpha1", "Server", "ServerList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}

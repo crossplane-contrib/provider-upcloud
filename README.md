@@ -16,7 +16,7 @@ resolvers and certificate bundles, managed databases with users, logical
 databases and connection pools, managed object storage with users, policies,
 buckets, custom domains and static sites, and the UpCloud Kubernetes Service.
 Every resource is available in two flavors: cluster-scoped
-(`*.upcloud.crossplane.io`) and namespaced (`*.upcloud.m.crossplane.io`).
+(`*.upcloud.com`) and namespaced (`*.m.upcloud.com`).
 
 ## Authentication
 
@@ -86,7 +86,7 @@ stringData:
 ### 3. Create a ProviderConfig
 
 ```yaml
-apiVersion: upcloud.crossplane.io/v1beta1
+apiVersion: provider.upcloud.com/v1beta1
 kind: ProviderConfig
 metadata:
   name: default
@@ -100,7 +100,7 @@ spec:
 ```
 
 Namespaced managed resources reference a `ClusterProviderConfig` (or a
-namespaced `ProviderConfig`) in the `upcloud.m.crossplane.io` group instead;
+namespaced `ProviderConfig`) in the `provider.m.upcloud.com` group instead;
 see [`examples/namespaced/providerconfig/`](examples/namespaced/providerconfig/).
 
 ### 4. Create a managed resource

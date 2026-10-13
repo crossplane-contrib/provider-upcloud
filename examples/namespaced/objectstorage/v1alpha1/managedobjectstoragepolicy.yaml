@@ -1,4 +1,4 @@
-apiVersion: objectstorage.upcloud.m.crossplane.io/v1alpha1
+apiVersion: objectstorage.m.upcloud.com/v1alpha1
 kind: ManagedObjectStoragePolicy
 metadata:
   annotations:
@@ -18,7 +18,7 @@ spec:
     name: default
 
 ---
-apiVersion: objectstorage.upcloud.m.crossplane.io/v1alpha1
+apiVersion: objectstorage.m.upcloud.com/v1alpha1
 kind: ManagedObjectStorage
 metadata:
   annotations:

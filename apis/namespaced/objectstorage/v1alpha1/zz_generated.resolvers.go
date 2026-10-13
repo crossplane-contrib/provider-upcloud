@@ -26,7 +26,7 @@ func (mg *ManagedObjectStorageBucket) ResolveReferences( // ResolveReferences of
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -58,7 +58,7 @@ func (mg *ManagedObjectStorageCustomDomain) ResolveReferences(ctx context.Contex
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -90,7 +90,7 @@ func (mg *ManagedObjectStoragePolicy) ResolveReferences(ctx context.Context, c c
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -122,7 +122,7 @@ func (mg *ManagedObjectStorageStaticSite) ResolveReferences(ctx context.Context,
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorageBucket", "ManagedObjectStorageBucketList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorageBucket", "ManagedObjectStorageBucketList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -142,7 +142,7 @@ func (mg *ManagedObjectStorageStaticSite) ResolveReferences(ctx context.Context,
 	mg.Spec.ForProvider.BucketName = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.BucketNameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -162,7 +162,7 @@ func (mg *ManagedObjectStorageStaticSite) ResolveReferences(ctx context.Context,
 	mg.Spec.ForProvider.ServiceUUID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServiceUUIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorageBucket", "ManagedObjectStorageBucketList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorageBucket", "ManagedObjectStorageBucketList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -182,7 +182,7 @@ func (mg *ManagedObjectStorageStaticSite) ResolveReferences(ctx context.Context,
 	mg.Spec.InitProvider.BucketName = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.BucketNameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -214,7 +214,7 @@ func (mg *ManagedObjectStorageUser) ResolveReferences(ctx context.Context, c cli
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -246,7 +246,7 @@ func (mg *ManagedObjectStorageUserAccessKey) ResolveReferences(ctx context.Conte
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -266,7 +266,7 @@ func (mg *ManagedObjectStorageUserAccessKey) ResolveReferences(ctx context.Conte
 	mg.Spec.ForProvider.ServiceUUID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServiceUUIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -298,7 +298,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStoragePolicy", "ManagedObjectStoragePolicyList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStoragePolicy", "ManagedObjectStoragePolicyList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -318,7 +318,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	mg.Spec.ForProvider.Name = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.NameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -338,7 +338,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	mg.Spec.ForProvider.ServiceUUID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServiceUUIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -358,7 +358,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	mg.Spec.ForProvider.Username = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.UsernameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStoragePolicy", "ManagedObjectStoragePolicyList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStoragePolicy", "ManagedObjectStoragePolicyList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -378,7 +378,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	mg.Spec.InitProvider.Name = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.NameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorage", "ManagedObjectStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -398,7 +398,7 @@ func (mg *ManagedObjectStorageUserPolicy) ResolveReferences(ctx context.Context,
 	mg.Spec.InitProvider.ServiceUUID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.ServiceUUIDRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("objectstorage.upcloud.m.crossplane.io", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
+		m, l, err = apisresolver.GetManagedResource("objectstorage.m.upcloud.com", "v1alpha1", "ManagedObjectStorageUser", "ManagedObjectStorageUserList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}

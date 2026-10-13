@@ -1,4 +1,4 @@
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: NetworkPeering
 metadata:
   annotations:
@@ -21,7 +21,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:
@@ -45,7 +45,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:
@@ -69,7 +69,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Router
 metadata:
   annotations:
@@ -86,7 +86,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Router
 metadata:
   annotations:

@@ -1,4 +1,4 @@
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: FloatingIPAddress
 metadata:
   annotations:
@@ -13,7 +13,7 @@ spec:
 
 ---
 
-apiVersion: server.upcloud.m.crossplane.io/v1alpha1
+apiVersion: server.m.upcloud.com/v1alpha1
 kind: Server
 metadata:
   annotations:

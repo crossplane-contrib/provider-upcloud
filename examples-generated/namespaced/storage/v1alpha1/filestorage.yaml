@@ -1,4 +1,4 @@
-apiVersion: storage.upcloud.m.crossplane.io/v1alpha1
+apiVersion: storage.m.upcloud.com/v1alpha1
 kind: FileStorage
 metadata:
   annotations:
@@ -27,7 +27,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:

@@ -1,4 +1,4 @@
-apiVersion: storage.upcloud.crossplane.io/v1alpha1
+apiVersion: storage.upcloud.com/v1alpha1
 kind: FileStorageShareACL
 metadata:
   annotations:
@@ -18,7 +18,7 @@ spec:
     name: default
 
 ---
-apiVersion: storage.upcloud.crossplane.io/v1alpha1
+apiVersion: storage.upcloud.com/v1alpha1
 kind: FileStorageShare
 metadata:
   annotations:
@@ -35,7 +35,7 @@ spec:
     name: default
 
 ---
-apiVersion: storage.upcloud.crossplane.io/v1alpha1
+apiVersion: storage.upcloud.com/v1alpha1
 kind: FileStorage
 metadata:
   annotations:
@@ -61,7 +61,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:

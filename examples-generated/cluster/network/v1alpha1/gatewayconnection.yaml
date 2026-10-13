@@ -1,4 +1,4 @@
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: GatewayConnection
 metadata:
   annotations:
@@ -24,7 +24,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: Gateway
 metadata:
   annotations:
@@ -46,7 +46,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:
@@ -68,7 +68,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: Router
 metadata:
   annotations:

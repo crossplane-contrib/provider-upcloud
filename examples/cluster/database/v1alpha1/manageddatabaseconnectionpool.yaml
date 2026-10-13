@@ -1,4 +1,4 @@
-apiVersion: database.upcloud.crossplane.io/v1alpha1
+apiVersion: database.upcloud.com/v1alpha1
 kind: ManagedDatabaseConnectionPool
 metadata:
   annotations:
@@ -20,7 +20,7 @@ spec:
     name: default
 
 ---
-apiVersion: database.upcloud.crossplane.io/v1alpha1
+apiVersion: database.upcloud.com/v1alpha1
 kind: ManagedDatabaseLogicalDatabase
 metadata:
   annotations:
@@ -36,7 +36,7 @@ spec:
     name: default
 
 ---
-apiVersion: database.upcloud.crossplane.io/v1alpha1
+apiVersion: database.upcloud.com/v1alpha1
 kind: ManagedDatabaseUser
 metadata:
   annotations:
@@ -56,7 +56,7 @@ spec:
     name: default
 
 ---
-apiVersion: database.upcloud.crossplane.io/v1alpha1
+apiVersion: database.upcloud.com/v1alpha1
 kind: ManagedDatabasePostgresql
 metadata:
   annotations:

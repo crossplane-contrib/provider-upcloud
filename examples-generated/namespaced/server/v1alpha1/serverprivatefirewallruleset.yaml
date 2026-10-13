@@ -1,4 +1,4 @@
-apiVersion: server.upcloud.m.crossplane.io/v1alpha1
+apiVersion: server.m.upcloud.com/v1alpha1
 kind: ServerPrivateFirewallRuleset
 metadata:
   annotations:
@@ -18,7 +18,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: FirewallRuleset
 metadata:
   annotations:
@@ -42,7 +42,7 @@ spec:
 
 ---
 
-apiVersion: network.upcloud.m.crossplane.io/v1alpha1
+apiVersion: network.m.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:
@@ -62,7 +62,7 @@ spec:
 
 ---
 
-apiVersion: server.upcloud.m.crossplane.io/v1alpha1
+apiVersion: server.m.upcloud.com/v1alpha1
 kind: Server
 metadata:
   annotations:

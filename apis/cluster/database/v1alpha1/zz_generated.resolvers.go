@@ -26,7 +26,7 @@ func (mg *ManagedDatabaseConnectionPool) ResolveReferences( // ResolveReferences
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabaseLogicalDatabase", "ManagedDatabaseLogicalDatabaseList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabaseLogicalDatabase", "ManagedDatabaseLogicalDatabaseList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -46,7 +46,7 @@ func (mg *ManagedDatabaseConnectionPool) ResolveReferences( // ResolveReferences
 	mg.Spec.ForProvider.Database = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.DatabaseRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -66,7 +66,7 @@ func (mg *ManagedDatabaseConnectionPool) ResolveReferences( // ResolveReferences
 	mg.Spec.ForProvider.Service = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ServiceRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabaseUser", "ManagedDatabaseUserList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabaseUser", "ManagedDatabaseUserList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -86,7 +86,7 @@ func (mg *ManagedDatabaseConnectionPool) ResolveReferences( // ResolveReferences
 	mg.Spec.ForProvider.Username = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.UsernameRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabaseLogicalDatabase", "ManagedDatabaseLogicalDatabaseList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabaseLogicalDatabase", "ManagedDatabaseLogicalDatabaseList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -106,7 +106,7 @@ func (mg *ManagedDatabaseConnectionPool) ResolveReferences( // ResolveReferences
 	mg.Spec.InitProvider.Database = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.DatabaseRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabaseUser", "ManagedDatabaseUserList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabaseUser", "ManagedDatabaseUserList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -138,7 +138,7 @@ func (mg *ManagedDatabaseLogicalDatabase) ResolveReferences(ctx context.Context,
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -172,7 +172,7 @@ func (mg *ManagedDatabaseMysql) ResolveReferences(ctx context.Context, c client.
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -194,7 +194,7 @@ func (mg *ManagedDatabaseMysql) ResolveReferences(ctx context.Context, c client.
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -229,7 +229,7 @@ func (mg *ManagedDatabaseOpensearch) ResolveReferences(ctx context.Context, c cl
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -251,7 +251,7 @@ func (mg *ManagedDatabaseOpensearch) ResolveReferences(ctx context.Context, c cl
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -286,7 +286,7 @@ func (mg *ManagedDatabasePostgresql) ResolveReferences(ctx context.Context, c cl
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -308,7 +308,7 @@ func (mg *ManagedDatabasePostgresql) ResolveReferences(ctx context.Context, c cl
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -341,7 +341,7 @@ func (mg *ManagedDatabaseUser) ResolveReferences(ctx context.Context, c client.R
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("database.upcloud.crossplane.io", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
+		m, l, err = apisresolver.GetManagedResource("database.upcloud.com", "v1alpha1", "ManagedDatabasePostgresql", "ManagedDatabasePostgresqlList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -375,7 +375,7 @@ func (mg *ManagedDatabaseValkey) ResolveReferences(ctx context.Context, c client
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -397,7 +397,7 @@ func (mg *ManagedDatabaseValkey) ResolveReferences(ctx context.Context, c client
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.Network); i3++ {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}

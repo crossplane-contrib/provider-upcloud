@@ -256,8 +256,8 @@ $(KUBECTL_VALIDATE):
 #   - Replaces uptest template variables (e.g. ${Rand.RFC1123Subdomain}) with a valid
 #     placeholder; kubectl-validate rejects those tokens as malformed field values.
 #   - Filters out non-UpCloud YAML files by matching only the apiVersion: line against
-#     upcloud.*crossplane.io, which covers both the cluster-scoped (upcloud.crossplane.io)
-#     and namespaced (upcloud.m.crossplane.io) variants. Anchoring prevents false
+#     upcloud.com/, which covers both the cluster-scoped (*.upcloud.com) and namespaced
+#     (*.m.upcloud.com) variants, ProviderConfigs included. Anchoring prevents false
 #     positives from description fields or comments that mention other providers.
 #   - Captures absolute paths for the binary and CRDs before cd-ing into tmpdir, and runs
 #     kubectl-validate from there so error output shows short relative paths.
@@ -270,7 +270,7 @@ example-lint: $(KUBECTL_VALIDATE)
 	kv=$$(realpath "$(KUBECTL_VALIDATE)"); \
 	cp -r examples/. "$$tmpdir/"; \
 	find "$$tmpdir" -name "*.yaml" | xargs perl -pi -e 's/\$$\{Rand\.[^}]*\}/uptest/g'; \
-	find "$$tmpdir" -name "*.yaml" | while read f; do grep -q '^apiVersion:.*upcloud.*crossplane\.io' "$$f" || rm -f "$$f"; done; \
+	find "$$tmpdir" -name "*.yaml" | while read f; do grep -q '^apiVersion:.*upcloud\.com/' "$$f" || rm -f "$$f"; done; \
 	for dir in examples/cluster/*/ examples/namespaced/*/; do \
 		group=$${dir#examples/}; group=$${group%/}; \
 		[ -d "$$tmpdir/$$group" ] || continue; \

@@ -8,7 +8,7 @@ import (
 
 // Package type metadata.
 const (
-	Group   = "upcloud.crossplane.io"
+	Group   = "provider.upcloud.com"
 	Version = "v1alpha1"
 )
 

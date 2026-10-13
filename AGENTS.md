@@ -12,14 +12,16 @@ This is a **Crossplane v2 Upjet provider** for [UpCloud](https://upcloud.com/). 
 
 Every resource is generated **twice** from the same `config/`:
 
-| Scope | Root group | ProviderConfig kind | API version example |
-|---|---|---|---|
-| Cluster | `upcloud.crossplane.io` | `ProviderConfig` | `server.upcloud.crossplane.io/v1alpha1` |
-| Namespaced | `upcloud.m.crossplane.io` | `ClusterProviderConfig` | `server.upcloud.m.crossplane.io/v1alpha1` |
+| Scope | Root group | ProviderConfig group | ProviderConfig kind | API version example |
+|---|---|---|---|---|
+| Cluster | `upcloud.com` | `provider.upcloud.com` | `ProviderConfig` | `server.upcloud.com/v1alpha1` |
+| Namespaced | `m.upcloud.com` | `provider.m.upcloud.com` | `ClusterProviderConfig` | `server.m.upcloud.com/v1alpha1` |
 
 `config/provider.go` (`GetProvider()`) builds the cluster configuration and `config/provider_namespaced.go` (`GetProviderNamespaced()`) the namespaced one. The generator in `cmd/generator/main.go` runs `pipeline.Run(pc, pns, rootDir)`.
 
-CRD group formula: `<shortGroup>.<rootGroup>`, e.g. short group `server` + root group `upcloud.crossplane.io` gives `server.upcloud.crossplane.io`.
+CRD group formula: `<shortGroup>.<rootGroup>`, e.g. short group `server` + root group `upcloud.com` gives `server.upcloud.com`.
+
+The groups are the ones the provider shipped with before it moved to crossplane-contrib. They stay unchanged so that existing installations upgrade in place; do not move them to `*.crossplane.io`.
 
 ### Terraform client split
 

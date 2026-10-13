@@ -51,8 +51,8 @@ type FirewallRuleInitParameters struct {
 	// The ICMP type of the rule. Only valid if protocol is ICMP.
 	IcmpType *string `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
-	// (String) The protocol of the rule. Possible values are “ (empty), tcp, udp, icmp.
-	// The protocol of the rule. Possible values are “ (empty), `tcp`, `udp`, `icmp`.
+	// (String) The protocol of the rule. Possible values are `` (empty), tcp, udp, icmp.
+	// The protocol of the rule. Possible values are `` (empty), `tcp`, `udp`, `icmp`.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (String) The source address range ends from this address
@@ -110,8 +110,8 @@ type FirewallRuleObservation struct {
 	// The ICMP type of the rule. Only valid if protocol is ICMP.
 	IcmpType *string `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
-	// (String) The protocol of the rule. Possible values are “ (empty), tcp, udp, icmp.
-	// The protocol of the rule. Possible values are “ (empty), `tcp`, `udp`, `icmp`.
+	// (String) The protocol of the rule. Possible values are `` (empty), tcp, udp, icmp.
+	// The protocol of the rule. Possible values are `` (empty), `tcp`, `udp`, `icmp`.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (String) The source address range ends from this address
@@ -178,8 +178,8 @@ type FirewallRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	IcmpType *string `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
-	// (String) The protocol of the rule. Possible values are “ (empty), tcp, udp, icmp.
-	// The protocol of the rule. Possible values are “ (empty), `tcp`, `udp`, `icmp`.
+	// (String) The protocol of the rule. Possible values are `` (empty), tcp, udp, icmp.
+	// The protocol of the rule. Possible values are `` (empty), `tcp`, `udp`, `icmp`.
 	// +kubebuilder:validation:Optional
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 

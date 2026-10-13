@@ -28,7 +28,7 @@ func (mg *FileStorage) ResolveReferences( // ResolveReferences of this FileStora
 
 	if mg.Spec.ForProvider.Network != nil {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -50,7 +50,7 @@ func (mg *FileStorage) ResolveReferences( // ResolveReferences of this FileStora
 	}
 	if mg.Spec.InitProvider.Network != nil {
 		{
-			m, l, err = apisresolver.GetManagedResource("network.upcloud.crossplane.io", "v1alpha1", "Network", "NetworkList")
+			m, l, err = apisresolver.GetManagedResource("network.upcloud.com", "v1alpha1", "Network", "NetworkList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 			}
@@ -83,7 +83,7 @@ func (mg *FileStorageShare) ResolveReferences(ctx context.Context, c client.Read
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "FileStorage", "FileStorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "FileStorage", "FileStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -115,7 +115,7 @@ func (mg *FileStorageShareACL) ResolveReferences(ctx context.Context, c client.R
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "FileStorage", "FileStorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "FileStorage", "FileStorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -135,7 +135,7 @@ func (mg *FileStorageShareACL) ResolveReferences(ctx context.Context, c client.R
 	mg.Spec.ForProvider.FileStorage = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.FileStorageRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "FileStorageShare", "FileStorageShareList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "FileStorageShare", "FileStorageShareList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -167,7 +167,7 @@ func (mg *StorageBackup) ResolveReferences(ctx context.Context, c client.Reader)
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -187,7 +187,7 @@ func (mg *StorageBackup) ResolveReferences(ctx context.Context, c client.Reader)
 	mg.Spec.ForProvider.SourceStorage = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.SourceStorageRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -219,7 +219,7 @@ func (mg *StorageTemplate) ResolveReferences(ctx context.Context, c client.Reade
 	var rsp reference.ResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -239,7 +239,7 @@ func (mg *StorageTemplate) ResolveReferences(ctx context.Context, c client.Reade
 	mg.Spec.ForProvider.SourceStorage = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.SourceStorageRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("storage.upcloud.crossplane.io", "v1alpha1", "Storage", "StorageList")
+		m, l, err = apisresolver.GetManagedResource("storage.upcloud.com", "v1alpha1", "Storage", "StorageList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}

@@ -25,7 +25,7 @@ func (mg *KubernetesCluster) ResolveReferences( // ResolveReferences of this Kub
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("network.upcloud.m.crossplane.io", "v1alpha1", "Network", "NetworkList")
+		m, l, err = apisresolver.GetManagedResource("network.m.upcloud.com", "v1alpha1", "Network", "NetworkList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -45,7 +45,7 @@ func (mg *KubernetesCluster) ResolveReferences( // ResolveReferences of this Kub
 	mg.Spec.ForProvider.Network = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.NetworkRef = rsp.ResolvedReference
 	{
-		m, l, err = apisresolver.GetManagedResource("network.upcloud.m.crossplane.io", "v1alpha1", "Network", "NetworkList")
+		m, l, err = apisresolver.GetManagedResource("network.m.upcloud.com", "v1alpha1", "Network", "NetworkList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
@@ -77,7 +77,7 @@ func (mg *KubernetesNodeGroup) ResolveReferences(ctx context.Context, c client.R
 	var rsp reference.NamespacedResolutionResponse
 	var err error
 	{
-		m, l, err = apisresolver.GetManagedResource("uks.upcloud.m.crossplane.io", "v1alpha1", "KubernetesCluster", "KubernetesClusterList")
+		m, l, err = apisresolver.GetManagedResource("uks.m.upcloud.com", "v1alpha1", "KubernetesCluster", "KubernetesClusterList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}

@@ -13,7 +13,7 @@ ${KUBECTL} -n crossplane-system wait --for=condition=Available deployment --all 
 
 echo "Creating a default provider config..."
 cat <<EOF | ${KUBECTL} apply -f -
-apiVersion: upcloud.crossplane.io/v1beta1
+apiVersion: provider.upcloud.com/v1beta1
 kind: ProviderConfig
 metadata:
   name: default
@@ -28,7 +28,7 @@ EOF
 
 echo "Creating a default cluster provider config (v2-style)..."
 cat <<EOF | ${KUBECTL} apply -f -
-apiVersion: upcloud.m.crossplane.io/v1beta1
+apiVersion: provider.m.upcloud.com/v1beta1
 kind: ClusterProviderConfig
 metadata:
   name: default

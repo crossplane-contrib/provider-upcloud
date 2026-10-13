@@ -1,4 +1,4 @@
-apiVersion: storage.upcloud.crossplane.io/v1alpha1
+apiVersion: storage.upcloud.com/v1alpha1
 kind: StorageBackup
 metadata:
   annotations:
@@ -15,7 +15,7 @@ spec:
     name: default
 
 ---
-apiVersion: storage.upcloud.crossplane.io/v1alpha1
+apiVersion: storage.upcloud.com/v1alpha1
 kind: Storage
 metadata:
   annotations:

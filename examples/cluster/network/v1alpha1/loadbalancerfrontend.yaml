@@ -1,4 +1,4 @@
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: LoadBalancerFrontend
 metadata:
   annotations:
@@ -20,7 +20,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: LoadBalancerBackend
 metadata:
   annotations:
@@ -36,7 +36,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: LoadBalancer
 metadata:
   annotations:
@@ -63,7 +63,7 @@ spec:
     name: default
 
 ---
-apiVersion: network.upcloud.crossplane.io/v1alpha1
+apiVersion: network.upcloud.com/v1alpha1
 kind: Network
 metadata:
   annotations:

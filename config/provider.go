@@ -43,7 +43,7 @@ func GetProvider(_ context.Context) (*ujconfig.Provider, error) {
 
 	pc := ujconfig.NewProvider(
 		[]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("upcloud.crossplane.io"),
+		ujconfig.WithRootGroup("upcloud.com"),
 		ujconfig.WithIncludeList([]string{}),
 		ujconfig.WithControllerTemplate(templates.ControllerTemplate),
 		ujconfig.WithTerraformPluginSDKIncludeList(terraformPluginSDKResourceList()),
