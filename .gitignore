@@ -14,4 +14,4 @@ cover.out
 kubeconfig
 
 # transient Claude Code agent worktrees
-.claude/worktrees/
+.agent/worktrees/

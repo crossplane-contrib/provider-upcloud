@@ -7,8 +7,6 @@ package clients
 import (
 	"context"
 	"encoding/json"
-	"math"
-	"strconv"
 
 	"github.com/UpCloudLtd/terraform-provider-upcloud/upcloud"
 	"github.com/crossplane/crossplane-runtime/v2/pkg/errors"
@@ -41,17 +39,13 @@ const (
 	keyUsername = "username"
 	keyPassword = "password"
 
-	// Optional client settings, named after the upstream provider attributes
-	// they are passed through to.
+	// Upstream provider attributes the ProviderConfig client settings are
+	// passed through to.
 	keyRequestTimeoutSec = "request_timeout_sec"
 	keyRetryMax          = "retry_max"
 	keyRetryWaitMinSec   = "retry_wait_min_sec"
 	keyRetryWaitMaxSec   = "retry_wait_max_sec"
 )
-
-// clientSettingKeys lists the optional integer settings of the upstream
-// provider that the credentials JSON may carry next to the credentials.
-var clientSettingKeys = []string{keyRequestTimeoutSec, keyRetryMax, keyRetryWaitMinSec, keyRetryWaitMaxSec}
 
 // TerraformSetupBuilder builds a terraform.SetupFn that configures the
 // in-process UpCloud Terraform provider (no-fork, no terraform CLI). The setup
@@ -78,7 +72,7 @@ func TerraformSetupBuilder(p *ujconfig.Provider) terraform.SetupFn {
 			return terraform.Setup{}, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
-		cfg, err := buildConfiguration(creds)
+		cfg, err := buildConfiguration(creds, pcSpec.ClientSettings)
 		if err != nil {
 			return terraform.Setup{}, errors.Wrap(err, "cannot build provider configuration")
 		}
@@ -130,14 +124,12 @@ func configureProviderMeta(ctx context.Context, ps *terraform.Setup) error {
 	return nil
 }
 
-// buildConfiguration maps the credentials secret onto the UpCloud provider
-// configuration block. An API token takes precedence; otherwise the
-// username and password pair is used. The optional client settings
-// (request_timeout_sec, retry_max, retry_wait_min_sec, retry_wait_max_sec)
-// are passed through when present, as JSON numbers or numeric strings. Only
-// the keys that are set are passed through, so the upstream provider applies
-// its own defaults for the rest.
-func buildConfiguration(creds map[string]any) (map[string]any, error) {
+// buildConfiguration maps the credentials secret and the ProviderConfig client
+// settings onto the UpCloud provider configuration block. An API token takes
+// precedence; otherwise the username and password pair is used. Only the
+// client settings that are set are passed through, so the upstream provider
+// applies its own defaults for the rest.
+func buildConfiguration(creds map[string]any, settings namespacedv1beta1.ClientSettings) (map[string]any, error) {
 	cfg := map[string]any{}
 	token, err := stringValue(creds, keyToken)
 	if err != nil {
@@ -160,16 +152,15 @@ func buildConfiguration(creds map[string]any) (map[string]any, error) {
 	default:
 		return nil, errors.New(`credentials secret needs a "token" key or both "username" and "password" keys`)
 	}
-	for _, key := range clientSettingKeys {
-		v, ok := creds[key]
-		if !ok {
-			continue
+	for key, v := range map[string]*int64{
+		keyRequestTimeoutSec: settings.RequestTimeoutSec,
+		keyRetryMax:          settings.RetryMax,
+		keyRetryWaitMinSec:   settings.RetryWaitMinSec,
+		keyRetryWaitMaxSec:   settings.RetryWaitMaxSec,
+	} {
+		if v != nil {
+			cfg[key] = *v
 		}
-		n, err := integerValue(key, v)
-		if err != nil {
-			return nil, err
-		}
-		cfg[key] = n
 	}
 	return cfg, nil
 }
@@ -186,26 +177,6 @@ func stringValue(creds map[string]any, key string) (string, error) {
 		return "", errors.Errorf("credentials key %q must be a string, got %T", key, v)
 	}
 	return s, nil
-}
-
-// integerValue converts a JSON number or a numeric string into the int64 the
-// upstream provider attributes expect.
-func integerValue(key string, v any) (int64, error) {
-	switch v := v.(type) {
-	case float64:
-		if v != math.Trunc(v) {
-			return 0, errors.Errorf("credentials key %q must be an integer, got %v", key, v)
-		}
-		return int64(v), nil
-	case string:
-		n, err := strconv.ParseInt(v, 10, 64)
-		if err != nil {
-			return 0, errors.Wrapf(err, "credentials key %q must be an integer", key)
-		}
-		return n, nil
-	default:
-		return 0, errors.Errorf("credentials key %q must be an integer, got %T", key, v)
-	}
 }
 
 func toSharedPCSpec(pc *clusterv1beta1.ProviderConfig) (*namespacedv1beta1.ProviderConfigSpec, error) {
@@ -258,6 +229,7 @@ func resolveLegacy(ctx context.Context, client client.Client, mg resource.Legacy
 func resolveNamespacedSpec(spec namespacedv1beta1.NamespacedProviderConfigSpec, namespace string) namespacedv1beta1.ProviderConfigSpec {
 	resolved := namespacedv1beta1.ProviderConfigSpec{
 		ReconciliationPolicy: spec.ReconciliationPolicy,
+		ClientSettings:       spec.ClientSettings,
 		Credentials: namespacedv1beta1.ProviderCredentials{
 			Source: spec.Credentials.Source,
 			CommonCredentialSelectors: xpv2.CommonCredentialSelectors{

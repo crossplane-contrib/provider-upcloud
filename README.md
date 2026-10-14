@@ -40,19 +40,8 @@ or, for a username and password pair:
 }
 ```
 
-The same JSON may carry the optional client settings of the upstream
-Terraform provider, as numbers or numeric strings. They bound how long a
-reconcile can wait on the UpCloud API; the defaults are the upstream ones.
-
-```json
-{
-  "token": "ucat_...",
-  "request_timeout_sec": 30,
-  "retry_max": 2,
-  "retry_wait_min_sec": 1,
-  "retry_wait_max_sec": 30
-}
-```
+The optional client settings of the upstream Terraform provider are
+`ProviderConfig` fields; see [ProviderConfig fields](#providerconfig-fields).
 
 ## Getting Started
 
@@ -116,6 +105,31 @@ Examples for each resource are available under
 | `spec.credentials.source` | Yes | One of `Secret`, `InjectedIdentity`, `Environment`, `Filesystem` |
 | `spec.credentials.secretRef` | When source=Secret | Reference to the credentials Secret |
 | `spec.reconciliationPolicy` | No | Rate-limiting policy for reconciliation |
+| `spec.requestTimeoutSec` | No | Seconds to wait for an UpCloud API request to complete (default `120`) |
+| `spec.retryMax` | No | Maximum number of retries of a failed UpCloud API request (default `4`) |
+| `spec.retryWaitMinSec` | No | Minimum seconds to wait between retries (default `1`) |
+| `spec.retryWaitMaxSec` | No | Maximum seconds to wait between retries (default `30`) |
+
+The client settings bound how long a reconcile can wait on the UpCloud API.
+Unset fields keep the upstream Terraform provider defaults:
+
+```yaml
+apiVersion: provider.upcloud.com/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: upcloud-creds
+      namespace: crossplane-system
+      key: creds
+  requestTimeoutSec: 30
+  retryMax: 2
+  retryWaitMinSec: 1
+  retryWaitMaxSec: 30
+```
 
 ## Developing
 

@@ -143,6 +143,34 @@ spec:
                   rule: '!has(self.exponentialFailureRateLimiter) || !has(self.exponentialFailureRateLimiter.baseDelay)
                     || has(self.exponentialFailureRateLimiter.maxDelay) || duration(self.exponentialFailureRateLimiter.baseDelay)
                     <= duration(''60s'')'
+              requestTimeoutSec:
+                description: |-
+                  RequestTimeoutSec is the duration, in seconds, the provider waits for
+                  an HTTP request to the UpCloud API to complete. Defaults to 120.
+                format: int64
+                minimum: 0
+                type: integer
+              retryMax:
+                description: |-
+                  RetryMax is the maximum number of retries of a failed UpCloud API
+                  request. Defaults to 4.
+                format: int64
+                minimum: 0
+                type: integer
+              retryWaitMaxSec:
+                description: |-
+                  RetryWaitMaxSec is the maximum time, in seconds, to wait between
+                  retries. Defaults to 30.
+                format: int64
+                minimum: 0
+                type: integer
+              retryWaitMinSec:
+                description: |-
+                  RetryWaitMinSec is the minimum time, in seconds, to wait between
+                  retries. Defaults to 1.
+                format: int64
+                minimum: 0
+                type: integer
             required:
             - credentials
             type: object

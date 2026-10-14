@@ -15,6 +15,37 @@ type ProviderConfigSpec struct {
 
 	// Credentials required to authenticate to this provider.
 	Credentials ProviderCredentials `json:"credentials"`
+
+	ClientSettings `json:",inline"`
+}
+
+// ClientSettings tune the HTTP client the provider talks to the UpCloud API
+// with. They bound how long a reconcile can wait on the UpCloud API; unset
+// fields keep the defaults of the upstream Terraform provider.
+type ClientSettings struct {
+	// RequestTimeoutSec is the duration, in seconds, the provider waits for
+	// an HTTP request to the UpCloud API to complete. Defaults to 120.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	RequestTimeoutSec *int64 `json:"requestTimeoutSec,omitempty"`
+
+	// RetryMax is the maximum number of retries of a failed UpCloud API
+	// request. Defaults to 4.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	RetryMax *int64 `json:"retryMax,omitempty"`
+
+	// RetryWaitMinSec is the minimum time, in seconds, to wait between
+	// retries. Defaults to 1.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	RetryWaitMinSec *int64 `json:"retryWaitMinSec,omitempty"`
+
+	// RetryWaitMaxSec is the maximum time, in seconds, to wait between
+	// retries. Defaults to 30.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	RetryWaitMaxSec *int64 `json:"retryWaitMaxSec,omitempty"`
 }
 
 // ProviderCredentials required to authenticate.
