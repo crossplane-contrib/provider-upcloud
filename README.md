@@ -22,8 +22,9 @@ Every resource is available in two flavors: cluster-scoped
 
 The provider authenticates with an UpCloud API token (recommended) or an API
 username and password read from the referenced `Secret`. Create a token in the
-[UpCloud Hub](https://hub.upcloud.com/) under Account > API tokens and store
-it as JSON:
+[UpCloud Hub](https://hub.upcloud.com/). More information available in
+documentation:
+[How to create and use UpCloud API Tokens](https://upcloud.com/docs/guides/managing-api-tokens/). Store the token as JSON:
 
 ```json
 {
