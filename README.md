@@ -1,76 +1,167 @@
-# Crossplane Provider UpCloud
+# Provider UpCloud
 
-`crossplane-provider-upcloud` is a [Crossplane](https://crossplane.io/) provider that
-is built using [Upjet](https://github.com/crossplane/upjet) code
-generation tools and exposes XRM-conformant managed resources for the
-UpCloud API.
+`provider-upcloud` is a [Crossplane](https://crossplane.io/) provider for
+[UpCloud](https://upcloud.com/), built with
+[Upjet](https://github.com/crossplane/upjet) and backed by the
+[`UpCloudLtd/upcloud`](https://github.com/UpCloudLtd/terraform-provider-upcloud)
+Terraform provider. It is maintained jointly by UpCloud and Upbound in the
+crossplane-contrib organization.
 
-The name of the provider in UpBound Marketplace is `provider-upcloud`.
+It exposes XRM-conformant managed resources for every resource of the
+Terraform provider: servers, server groups, firewall rules and rulesets,
+tags, storage with backups and templates, file storage with shares and ACLs,
+networks, routers, network peerings, floating IPs, gateways with VPN
+connections and tunnels, load balancers with backends, frontends, rules,
+resolvers and certificate bundles, managed databases with users, logical
+databases and connection pools, managed object storage with users, policies,
+buckets, custom domains and static sites, and the UpCloud Kubernetes Service.
+Every resource is available in two flavors: cluster-scoped
+(`*.upcloud.com`) and namespaced (`*.m.upcloud.com`).
 
-Please note that this project is currently in early alpha version, we do not recommend running it in production yet.
+## Authentication
 
-## Quickstart
+The provider authenticates with an UpCloud API token (recommended) or an API
+username and password read from the referenced `Secret`. Create a token in the
+[UpCloud Hub](https://hub.upcloud.com/). More information available in
+documentation:
+[How to create and use UpCloud API Tokens](https://upcloud.com/docs/guides/managing-api-tokens/). Store the token as JSON:
 
-1. You will need a Kubernetes cluster to start using a provider. You can use any Kubernetes cluster, but for testing and development purposes, a Kind cluster is recommended:
-    ```
-    kind create cluster -n crossplane-test
-    ```
+```json
+{
+  "token": "ucat_..."
+}
+```
 
-2. Next install UpCloud provider. The simplest way to do that is to just apply the following yaml:
-    ```
-    apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    metadata:
-      name: provider-upcloud
-    spec:
-      package: xpkg.upbound.io/upcloud/provider-upcloud:v0.1.0
-    ```
+or, for a username and password pair:
 
- Make sure to change the version to the latest one.
+```json
+{
+  "username": "<UpCloud API username>",
+  "password": "<UpCloud API password>"
+}
+```
 
-3. Next, you need to create a `Secret` with your UpCloud API credentials and a `ProviderConfig` that will use them to provision your infrastructure. Replace `ucat_TOKEN` with your UpCloud API token and apply this yaml (you can also use username and password, but we recommend using an API token):
-    ```
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: example-provider-creds
-      namespace: default
-    type: Opaque
-    stringData:
-      credentials: |
-        {
-          "token": "ucat_TOKEN"
-        }
-    ---
-    apiVersion: provider.upcloud.com/v1beta1
-    kind: ProviderConfig
-    metadata:
-      name: default
-    spec:
-      credentials:
-        source: Secret
-        secretRef:
-          name: example-provider-creds
-          namespace: default
-          key: credentials
-    ```
+The optional client settings of the upstream Terraform provider are
+`ProviderConfig` fields; see [ProviderConfig fields](#providerconfig-fields).
 
-4. And now you can start creating your infrastructure. Check our [examples](examples/resources) to see what Managed Resources you can use and how. Have fun!
+## Getting Started
 
-## Missing resources
+### 1. Install the provider
 
-While this provider allows you to manage most of the UpCloud services, support for some is still missing. The missing list includes:
-- [Load Balancers](https://developers.upcloud.com/1.3/17-managed-loadbalancer/)
-- [Network Gateways](https://developers.upcloud.com/1.3/19-network-gateways/)
-- [Floating IP address](https://developers.upcloud.com/1.3/10-ip-addresses/#creating-floating-ips)
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-upcloud
+spec:
+  package: xpkg.crossplane.io/crossplane-contrib/provider-upcloud:v1.0.0
+```
 
-We are currently working on adding support for them, thank you for your patience!
+### 2. Create a credentials Secret
 
-## Report a Bug
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: upcloud-creds
+  namespace: crossplane-system
+type: Opaque
+stringData:
+  creds: |
+    {
+      "token": "ucat_..."
+    }
+```
 
-For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/UpCloudLtd/crossplane-provider-upcloud/issues).
+### 3. Create a ProviderConfig
+
+```yaml
+apiVersion: provider.upcloud.com/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: upcloud-creds
+      namespace: crossplane-system
+      key: creds
+```
+
+Namespaced managed resources reference a `ClusterProviderConfig` (or a
+namespaced `ProviderConfig`) in the `provider.m.upcloud.com` group instead;
+see [`examples/namespaced/providerconfig/`](examples/namespaced/providerconfig/).
+
+### 4. Create a managed resource
+
+Examples for each resource are available under
+[`examples/cluster/`](examples/cluster/) and
+[`examples/namespaced/`](examples/namespaced/).
+
+## ProviderConfig fields
+
+| Field | Required | Description |
+|---|---|---|
+| `spec.credentials.source` | Yes | One of `Secret`, `InjectedIdentity`, `Environment`, `Filesystem` |
+| `spec.credentials.secretRef` | When source=Secret | Reference to the credentials Secret |
+| `spec.reconciliationPolicy` | No | Rate-limiting policy for reconciliation |
+| `spec.requestTimeoutSec` | No | Seconds to wait for an UpCloud API request to complete (default `120`) |
+| `spec.retryMax` | No | Maximum number of retries of a failed UpCloud API request (default `4`) |
+| `spec.retryWaitMinSec` | No | Minimum seconds to wait between retries (default `1`) |
+| `spec.retryWaitMaxSec` | No | Maximum seconds to wait between retries (default `30`) |
+
+The client settings bound how long a reconcile can wait on the UpCloud API.
+Unset fields keep the upstream Terraform provider defaults:
+
+```yaml
+apiVersion: provider.upcloud.com/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: upcloud-creds
+      namespace: crossplane-system
+      key: creds
+  requestTimeoutSec: 30
+  retryMax: 2
+  retryWaitMinSec: 1
+  retryWaitMaxSec: 30
+```
 
 ## Developing
 
-For development instructions see [DEVELOPING.md](DEVELOPING.md)
+### Code generation
+
+```console
+make generate
+```
+
+This runs the Upjet code generator against the pinned `UpCloudLtd/upcloud`
+Terraform provider schema and docs, and writes the generated APIs,
+controllers, and CRDs for both the cluster-scoped and namespaced variants.
+
+### Run locally against a cluster
+
+```console
+make run
+```
+
+### Run end-to-end tests
+
+```console
+UPTEST_EXAMPLE_LIST="examples/cluster/storage/v1alpha1/storage.yaml" \
+UPTEST_CLOUD_CREDENTIALS='{"token": "ucat_..."}' \
+make e2e
+```
+
+See [AGENTS.md](AGENTS.md) for the repository layout and the full development
+workflow.
+
+## Reporting issues
+
+Please open an [issue](https://github.com/crossplane-contrib/provider-upcloud/issues)
+for bug reports, feature requests, or questions.

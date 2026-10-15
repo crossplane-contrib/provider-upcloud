@@ -1,0 +1,43 @@
+apiVersion: uks.upcloud.com/v1alpha1
+kind: KubernetesCluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: uks/v1alpha1/kubernetescluster
+  labels:
+    testing.upbound.io/example-name: uks-example
+  name: uks-example
+spec:
+  forProvider:
+    name: uks-example
+    zone: fi-hel2
+    fetchKubeconfig: true
+    controlPlaneIpFilter:
+      - 0.0.0.0/0
+    networkSelector:
+      matchLabels:
+        testing.upbound.io/example-name: uks-example-network
+  providerConfigRef:
+    name: default
+  writeConnectionSecretToRef:
+    name: uks-example-kubeconfig
+    namespace: crossplane-system
+
+---
+apiVersion: network.upcloud.com/v1alpha1
+kind: Network
+metadata:
+  annotations:
+    meta.upbound.io/example-id: uks/v1alpha1/kubernetescluster
+  labels:
+    testing.upbound.io/example-name: uks-example-network
+  name: uks-${Rand.RFC1123Subdomain}
+spec:
+  forProvider:
+    name: uks-${Rand.RFC1123Subdomain}
+    zone: fi-hel2
+    ipNetwork:
+      address: 172.16.11.0/24
+      dhcp: true
+      family: IPv4
+  providerConfigRef:
+    name: default

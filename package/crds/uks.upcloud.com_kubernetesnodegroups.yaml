@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.18.0
+    controller-gen.kubebuilder.io/version: v0.22.0
   name: kubernetesnodegroups.uks.upcloud.com
 spec:
   group: uks.upcloud.com
@@ -35,8 +35,8 @@ spec:
     schema:
       openAPIV3Schema:
         description: KubernetesNodeGroup is the Schema for the KubernetesNodeGroups
-          API. This resource represents a Managed Kubernetes https://upcloud.com/products/managed-kubernetes
-          cluster.
+          API. This resource represents a node group in a Managed Kubernetes https://upcloud.com/products/managed-kubernetes
+          cluster. The node groups are used to define the worker nodes of the cluster.
         properties:
           apiVersion:
             description: |-
@@ -83,20 +83,18 @@ spec:
                     description: |-
                       (Block List) Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans. (see below for nested schema)
                       Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   cluster:
                     description: |-
                       (String) UUID of the cluster.
@@ -182,48 +180,44 @@ spec:
                     description: |-
                       (Block List) Resource properties for custom plan. This block is required for custom plans only. (see below for nested schema)
                       Resource properties for custom plan. This block is required for `custom` plans only.
-                    items:
-                      properties:
-                        cores:
-                          description: |-
-                            (Number) The number of CPU cores dedicated to individual node group nodes.
-                            The number of CPU cores dedicated to individual node group nodes.
-                          type: number
-                        memory:
-                          description: |-
-                            (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                            The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                          type: number
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      cores:
+                        description: |-
+                          (Number) The number of CPU cores dedicated to individual node group nodes.
+                          The number of CPU cores dedicated to individual node group nodes.
+                        type: number
+                      memory:
+                        description: |-
+                          (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                          The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                        type: number
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   gpuPlan:
                     description: |-
                       (Block List) Resource properties for GPU plan storage configuration. This block is optional for GPU plans. (see below for nested schema)
                       Resource properties for GPU plan storage configuration. This block is optional for GPU plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   kubeletArgs:
                     description: |-
                       -. The API will prefix the arguments with -- when preparing kubelet call.
@@ -326,66 +320,60 @@ spec:
                     description: |-
                       (Block List) Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans. (see below for nested schema)
                       Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   customPlan:
                     description: |-
                       (Block List) Resource properties for custom plan. This block is required for custom plans only. (see below for nested schema)
                       Resource properties for custom plan. This block is required for `custom` plans only.
-                    items:
-                      properties:
-                        cores:
-                          description: |-
-                            (Number) The number of CPU cores dedicated to individual node group nodes.
-                            The number of CPU cores dedicated to individual node group nodes.
-                          type: number
-                        memory:
-                          description: |-
-                            (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                            The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                          type: number
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      cores:
+                        description: |-
+                          (Number) The number of CPU cores dedicated to individual node group nodes.
+                          The number of CPU cores dedicated to individual node group nodes.
+                        type: number
+                      memory:
+                        description: |-
+                          (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                          The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                        type: number
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   gpuPlan:
                     description: |-
                       (Block List) Resource properties for GPU plan storage configuration. This block is optional for GPU plans. (see below for nested schema)
                       Resource properties for GPU plan storage configuration. This block is optional for GPU plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   kubeletArgs:
                     description: |-
                       -. The API will prefix the arguments with -- when preparing kubelet call.
@@ -575,20 +563,18 @@ spec:
                     description: |-
                       (Block List) Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans. (see below for nested schema)
                       Resource properties for Cloud Native plan storage configuration. This block is optional for Cloud Native plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   cluster:
                     description: |-
                       (String) UUID of the cluster.
@@ -598,48 +584,44 @@ spec:
                     description: |-
                       (Block List) Resource properties for custom plan. This block is required for custom plans only. (see below for nested schema)
                       Resource properties for custom plan. This block is required for `custom` plans only.
-                    items:
-                      properties:
-                        cores:
-                          description: |-
-                            (Number) The number of CPU cores dedicated to individual node group nodes.
-                            The number of CPU cores dedicated to individual node group nodes.
-                          type: number
-                        memory:
-                          description: |-
-                            (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                            The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
-                          type: number
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      cores:
+                        description: |-
+                          (Number) The number of CPU cores dedicated to individual node group nodes.
+                          The number of CPU cores dedicated to individual node group nodes.
+                        type: number
+                      memory:
+                        description: |-
+                          (Number) The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                          The amount of memory in megabytes to assign to individual node group node. Value needs to be divisible by 1024.
+                        type: number
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   gpuPlan:
                     description: |-
                       (Block List) Resource properties for GPU plan storage configuration. This block is optional for GPU plans. (see below for nested schema)
                       Resource properties for GPU plan storage configuration. This block is optional for GPU plans.
-                    items:
-                      properties:
-                        storageSize:
-                          description: |-
-                            (Number) The size of the storage device in gigabytes.
-                            The size of the storage device in gigabytes.
-                          type: number
-                        storageTier:
-                          description: |-
-                            (String) The storage tier to use.
-                            The storage tier to use.
-                          type: string
-                      type: object
-                    type: array
+                    properties:
+                      storageSize:
+                        description: |-
+                          (Number) The size of the storage device in gigabytes.
+                          The size of the storage device in gigabytes.
+                        type: number
+                      storageTier:
+                        description: |-
+                          (String) The storage tier to use.
+                          The storage tier to use.
+                        type: string
+                    type: object
                   id:
                     description: (String) Computed ID of the node group. This is a
                       combination of the cluster UUID and the node group name, separated
@@ -771,6 +753,13 @@ spec:
                 x-kubernetes-list-map-keys:
                 - type
                 x-kubernetes-list-type: map
+              lastHandledReconcileAt:
+                description: |-
+                  LastHandledReconcileAt holds the value of the most recent
+                  reconcile-requested-at annotation token that the controller has
+                  processed. Users can compare this to the annotation to determine
+                  whether a reconcile request has been handled.
+                type: string
               observedGeneration:
                 description: |-
                   ObservedGeneration is the latest metadata.generation
