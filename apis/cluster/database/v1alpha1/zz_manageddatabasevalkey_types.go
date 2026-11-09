@@ -48,6 +48,14 @@ type ManagedDatabaseValkeyInitParameters struct {
 	// Not supported for `valkey` databases. Should be left unconfigured.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
+
 	// value pairs to classify the database.
 	// User defined key-value pairs to classify the database.
 	// +mapType=granular
@@ -200,6 +208,14 @@ type ManagedDatabaseValkeyObservation struct {
 	// Not supported for `valkey` databases. Should be left unconfigured.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
+
 	// (Attributes List) Service component information (see below for nested schema)
 	Components []ManagedDatabaseValkeyComponentsObservation `json:"components,omitempty" tf:"components,omitempty"`
 
@@ -285,6 +301,16 @@ type ManagedDatabaseValkeyParameters struct {
 	// Not supported for `valkey` databases. Should be left unconfigured.
 	// +kubebuilder:validation:Optional
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
+
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// +kubebuilder:validation:Optional
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	// +kubebuilder:validation:Optional
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
 
 	// value pairs to classify the database.
 	// User defined key-value pairs to classify the database.

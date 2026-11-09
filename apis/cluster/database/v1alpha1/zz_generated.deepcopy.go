@@ -1631,6 +1631,16 @@ func (in *ManagedDatabaseMysqlInitParameters) DeepCopyInto(out *ManagedDatabaseM
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Labels != nil {
 		in, out := &in.Labels, &out.Labels
 		*out = make(map[string]*string, len(*in))
@@ -1769,6 +1779,16 @@ func (in *ManagedDatabaseMysqlObservation) DeepCopyInto(out *ManagedDatabaseMysq
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.Components != nil {
@@ -1926,6 +1946,16 @@ func (in *ManagedDatabaseMysqlParameters) DeepCopyInto(out *ManagedDatabaseMysql
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.Labels != nil {
@@ -2171,6 +2201,16 @@ func (in *ManagedDatabaseOpensearchInitParameters) DeepCopyInto(out *ManagedData
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.ExtendedAccessControl != nil {
@@ -2488,6 +2528,16 @@ func (in *ManagedDatabaseOpensearchObservation) DeepCopyInto(out *ManagedDatabas
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Components != nil {
 		in, out := &in.Components, &out.Components
 		*out = make([]ManagedDatabaseOpensearchComponentsObservation, len(*in))
@@ -2633,6 +2683,16 @@ func (in *ManagedDatabaseOpensearchParameters) DeepCopyInto(out *ManagedDatabase
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.ExtendedAccessControl != nil {
@@ -4313,6 +4373,16 @@ func (in *ManagedDatabasePostgresqlInitParameters) DeepCopyInto(out *ManagedData
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Labels != nil {
 		in, out := &in.Labels, &out.Labels
 		*out = make(map[string]*string, len(*in))
@@ -4638,6 +4708,16 @@ func (in *ManagedDatabasePostgresqlObservation) DeepCopyInto(out *ManagedDatabas
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Components != nil {
 		in, out := &in.Components, &out.Components
 		*out = make([]ManagedDatabasePostgresqlComponentsObservation, len(*in))
@@ -4798,6 +4878,16 @@ func (in *ManagedDatabasePostgresqlParameters) DeepCopyInto(out *ManagedDatabase
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.Labels != nil {
@@ -6592,6 +6682,16 @@ func (in *ManagedDatabaseValkeyInitParameters) DeepCopyInto(out *ManagedDatabase
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Labels != nil {
 		in, out := &in.Labels, &out.Labels
 		*out = make(map[string]*string, len(*in))
@@ -6897,6 +6997,16 @@ func (in *ManagedDatabaseValkeyObservation) DeepCopyInto(out *ManagedDatabaseVal
 		*out = new(float64)
 		**out = **in
 	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
+		**out = **in
+	}
 	if in.Components != nil {
 		in, out := &in.Components, &out.Components
 		*out = make([]ManagedDatabaseValkeyComponentsObservation, len(*in))
@@ -7032,6 +7142,16 @@ func (in *ManagedDatabaseValkeyParameters) DeepCopyInto(out *ManagedDatabaseValk
 	if in.AdditionalDiskSpaceGib != nil {
 		in, out := &in.AdditionalDiskSpaceGib, &out.AdditionalDiskSpaceGib
 		*out = new(float64)
+		**out = **in
+	}
+	if in.CloneFrom != nil {
+		in, out := &in.CloneFrom, &out.CloneFrom
+		*out = new(string)
+		**out = **in
+	}
+	if in.CloneTime != nil {
+		in, out := &in.CloneTime, &out.CloneTime
+		*out = new(string)
 		**out = **in
 	}
 	if in.Labels != nil {

@@ -87,9 +87,24 @@ spec:
                     type: number
                   firewall:
                     description: |-
-                      (Boolean) Are firewall rules active for the server
-                      Are firewall rules active for the server
+                      (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+                      Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
                     type: boolean
+                  firewallPrivate:
+                    description: |-
+                      (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                      Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                    type: boolean
+                  firewallPrivateDefaultIncomingAction:
+                    description: |-
+                      (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+                      Default action for unmatched incoming private SDN traffic (accept or drop).
+                    type: string
+                  firewallPrivateDefaultOutgoingAction:
+                    description: |-
+                      (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+                      Default action for unmatched outgoing private SDN traffic (accept or drop).
+                    type: string
                   host:
                     description: |-
                       attribute. Only available for private cloud hosts
@@ -570,9 +585,24 @@ spec:
                     type: number
                   firewall:
                     description: |-
-                      (Boolean) Are firewall rules active for the server
-                      Are firewall rules active for the server
+                      (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+                      Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
                     type: boolean
+                  firewallPrivate:
+                    description: |-
+                      (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                      Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                    type: boolean
+                  firewallPrivateDefaultIncomingAction:
+                    description: |-
+                      (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+                      Default action for unmatched incoming private SDN traffic (accept or drop).
+                    type: string
+                  firewallPrivateDefaultOutgoingAction:
+                    description: |-
+                      (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+                      Default action for unmatched outgoing private SDN traffic (accept or drop).
+                    type: string
                   host:
                     description: |-
                       attribute. Only available for private cloud hosts
@@ -1144,9 +1174,24 @@ spec:
                     type: number
                   firewall:
                     description: |-
-                      (Boolean) Are firewall rules active for the server
-                      Are firewall rules active for the server
+                      (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+                      Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
                     type: boolean
+                  firewallPrivate:
+                    description: |-
+                      (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                      Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+                    type: boolean
+                  firewallPrivateDefaultIncomingAction:
+                    description: |-
+                      (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+                      Default action for unmatched incoming private SDN traffic (accept or drop).
+                    type: string
+                  firewallPrivateDefaultOutgoingAction:
+                    description: |-
+                      (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+                      Default action for unmatched outgoing private SDN traffic (accept or drop).
+                    type: string
                   host:
                     description: |-
                       attribute. Only available for private cloud hosts

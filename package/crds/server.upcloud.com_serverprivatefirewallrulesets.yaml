@@ -36,7 +36,11 @@ spec:
       openAPIV3Schema:
         description: ServerPrivateFirewallRuleset is the Schema for the ServerPrivateFirewallRulesets
           API. This resource represents an attachment of an UpCloud SDN private firewall
-          ruleset to a server.
+          ruleset to a server. Enable private filtering with firewall_private on upcloud_server
+          and enable the ruleset with enabled. The server defaults control unmatched
+          private traffic. Attachment occurs after server creation, so the intended
+          policy is not guaranteed from first boot; restrictive defaults can block
+          traffic until the ruleset is attached.
         properties:
           apiVersion:
             description: |-

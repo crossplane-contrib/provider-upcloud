@@ -6,7 +6,7 @@ tool golang.org/x/tools/cmd/goimports
 
 require (
 	dario.cat/mergo v1.0.2
-	github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261012082644-55699ab09e80
+	github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261109144059-a5ae742bd9c8
 	github.com/alecthomas/kingpin/v2 v2.4.0
 	github.com/crossplane/crossplane-runtime/v2 v2.5.0-rc.0.0.20260928191606-9420ba2f1717
 	github.com/crossplane/crossplane-tools v0.0.0-20260719180100-659f1dc036c5
@@ -31,7 +31,7 @@ require (
 	github.com/ProtonMail/go-crypto v1.4.1 // indirect
 	github.com/UpCloudLtd/httplog v0.0.0-20260624214043-23b0cab8e085 // indirect
 	github.com/UpCloudLtd/upcloud-go-api/credentials v0.1.2-0.20260218111517-78b5a1eb8206 // indirect
-	github.com/UpCloudLtd/upcloud-go-api/v8 v8.40.0 // indirect
+	github.com/UpCloudLtd/upcloud-go-api/v8 v8.42.0 // indirect
 	github.com/UpCloudLtd/upcloud-go-api/v9 v9.0.0-20261001102606-7c5944e678e2 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/alecthomas/units v0.0.0-20240927000941-0f3dac36c52b // indirect
@@ -129,7 +129,7 @@ require (
 	github.com/spf13/afero v1.15.0 // indirect
 	github.com/spf13/cobra v1.10.2 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
-	github.com/stretchr/testify v1.11.1 // indirect
+	github.com/stretchr/testify v1.12.1 // indirect
 	github.com/tidwall/gjson v1.18.0 // indirect
 	github.com/tidwall/match v1.2.0 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
