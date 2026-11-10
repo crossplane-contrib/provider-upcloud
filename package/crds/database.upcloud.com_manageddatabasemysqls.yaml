@@ -80,6 +80,16 @@ spec:
                       (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
+                  cloneFrom:
+                    description: |-
+                      (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                      UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                    type: string
+                  cloneTime:
+                    description: |-
+                      01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+                      Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+                    type: string
                   labels:
                     additionalProperties:
                       type: string
@@ -734,6 +744,16 @@ spec:
                       (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
+                  cloneFrom:
+                    description: |-
+                      (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                      UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                    type: string
+                  cloneTime:
+                    description: |-
+                      01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+                      Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+                    type: string
                   labels:
                     additionalProperties:
                       type: string
@@ -1480,6 +1500,16 @@ spec:
                       (Number, Deprecated) Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                       Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
                     type: number
+                  cloneFrom:
+                    description: |-
+                      (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                      UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+                    type: string
+                  cloneTime:
+                    description: |-
+                      01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+                      Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+                    type: string
                   components:
                     description: (Attributes List) Service component information (see
                       below for nested schema)

@@ -1301,6 +1301,21 @@ func (in *ServerInitParameters) DeepCopyInto(out *ServerInitParameters) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.FirewallPrivate != nil {
+		in, out := &in.FirewallPrivate, &out.FirewallPrivate
+		*out = new(bool)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultIncomingAction != nil {
+		in, out := &in.FirewallPrivateDefaultIncomingAction, &out.FirewallPrivateDefaultIncomingAction
+		*out = new(string)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultOutgoingAction != nil {
+		in, out := &in.FirewallPrivateDefaultOutgoingAction, &out.FirewallPrivateDefaultOutgoingAction
+		*out = new(string)
+		**out = **in
+	}
 	if in.Host != nil {
 		in, out := &in.Host, &out.Host
 		*out = new(float64)
@@ -1484,6 +1499,21 @@ func (in *ServerObservation) DeepCopyInto(out *ServerObservation) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.FirewallPrivate != nil {
+		in, out := &in.FirewallPrivate, &out.FirewallPrivate
+		*out = new(bool)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultIncomingAction != nil {
+		in, out := &in.FirewallPrivateDefaultIncomingAction, &out.FirewallPrivateDefaultIncomingAction
+		*out = new(string)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultOutgoingAction != nil {
+		in, out := &in.FirewallPrivateDefaultOutgoingAction, &out.FirewallPrivateDefaultOutgoingAction
+		*out = new(string)
+		**out = **in
+	}
 	if in.Host != nil {
 		in, out := &in.Host, &out.Host
 		*out = new(float64)
@@ -1638,6 +1668,21 @@ func (in *ServerParameters) DeepCopyInto(out *ServerParameters) {
 	if in.Firewall != nil {
 		in, out := &in.Firewall, &out.Firewall
 		*out = new(bool)
+		**out = **in
+	}
+	if in.FirewallPrivate != nil {
+		in, out := &in.FirewallPrivate, &out.FirewallPrivate
+		*out = new(bool)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultIncomingAction != nil {
+		in, out := &in.FirewallPrivateDefaultIncomingAction, &out.FirewallPrivateDefaultIncomingAction
+		*out = new(string)
+		**out = **in
+	}
+	if in.FirewallPrivateDefaultOutgoingAction != nil {
+		in, out := &in.FirewallPrivateDefaultOutgoingAction, &out.FirewallPrivateDefaultOutgoingAction
+		*out = new(string)
 		**out = **in
 	}
 	if in.Host != nil {

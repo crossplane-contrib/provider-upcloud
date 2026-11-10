@@ -15,12 +15,12 @@ github.com/ProtonMail/go-crypto v1.4.1/go.mod h1:e1OaTyu5SYVrO9gKOEhTc+5UcXtTUa+
 github.com/RaveNoX/go-jsoncommentstrip v1.0.0/go.mod h1:78ihd09MekBnJnxpICcwzCMzGrKSKYe4AqU6PDYYpjk=
 github.com/UpCloudLtd/httplog v0.0.0-20260624214043-23b0cab8e085 h1:WKK9DZI0ZQikQjhHk+/X2HWKxFrENOvseaDysZE8nPs=
 github.com/UpCloudLtd/httplog v0.0.0-20260624214043-23b0cab8e085/go.mod h1:79ZjkJrYkl540hQ5Fy7XkRfR7109HGMTzHdVEkynTqw=
-github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261012082644-55699ab09e80 h1:gIgOlDJHsW9bnCuj/dLiMwEwrc9Xdpw2FrjPkyyDkVI=
-github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261012082644-55699ab09e80/go.mod h1:m6abrM86T7CJ5cgf7hS0SrJuk7NobkaK4SEdmRFzC7A=
+github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261109144059-a5ae742bd9c8 h1:ofmjuEcooHIU2JKdrLZ9fivuN+O8UznxEMvsWga0vGo=
+github.com/UpCloudLtd/terraform-provider-upcloud v0.0.0-20261109144059-a5ae742bd9c8/go.mod h1:1ZIZN8axzZcAC47WZXGeW9b/ndgHz22zvP46CaSN8pI=
 github.com/UpCloudLtd/upcloud-go-api/credentials v0.1.2-0.20260218111517-78b5a1eb8206 h1:r1Q2sxM6GkJiRrw14gFC9GHk49mh4ngpX+ihFNDZ4ro=
 github.com/UpCloudLtd/upcloud-go-api/credentials v0.1.2-0.20260218111517-78b5a1eb8206/go.mod h1:aZoVN4egBMe11BuJWJywm2aF1rZipCQ69VhacEtYm/M=
-github.com/UpCloudLtd/upcloud-go-api/v8 v8.40.0 h1:MvG4zuzKb0WXruxDebF1OgFXZ+zxPH2MBa0jHDQ9dBo=
-github.com/UpCloudLtd/upcloud-go-api/v8 v8.40.0/go.mod h1:ex/UPAIOJxtzwe0DqX2gwCC2/oce7pBqg78pB+YnH9k=
+github.com/UpCloudLtd/upcloud-go-api/v8 v8.42.0 h1:R7dIeJVAxfFJsYiufMYm79iVoR2x0yNodkYyHjMn9gw=
+github.com/UpCloudLtd/upcloud-go-api/v8 v8.42.0/go.mod h1:mqLH/Wu3gm3tNk0tN0RRY1E8hddQJtQhgaPtJocD430=
 github.com/UpCloudLtd/upcloud-go-api/v9 v9.0.0-20261001102606-7c5944e678e2 h1:RbgAqz9B9HuiqPbNw7QAxcZlViOwOAlva1HxmbyfyuI=
 github.com/UpCloudLtd/upcloud-go-api/v9 v9.0.0-20261001102606-7c5944e678e2/go.mod h1:mHX52YNu+cWHzK7fNoT0g5TOzbVxgnfWZtJdWuhKHgs=
 github.com/agext/levenshtein v1.2.1/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
@@ -371,8 +371,8 @@ github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
-github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
+github.com/stretchr/testify v1.12.1 h1:EuwCh5fleGS7H32xRwO3wRGT7DxrDhLAT6FF8MpWDWE=
+github.com/stretchr/testify v1.12.1/go.mod h1:MDEgiDPPsNp5cuIrHPPCyornHKgEVbtFUmoNlxoYthg=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.18.0 h1:FIDeeyB800efLX89e5a8Y0BNH+LOngJyGrIWxG2FKQY=
 github.com/tidwall/gjson v1.18.0/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=

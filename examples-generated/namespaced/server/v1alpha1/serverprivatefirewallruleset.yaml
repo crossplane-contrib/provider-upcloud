@@ -30,6 +30,7 @@ metadata:
 spec:
   forProvider:
     description: Private SDN ruleset
+    enabled: true
     name: example-private-ruleset
     rules:
     - action: accept
@@ -73,6 +74,9 @@ metadata:
   namespace: upbound-system
 spec:
   forProvider:
+    firewallPrivate: true
+    firewallPrivateDefaultIncomingAction: drop
+    firewallPrivateDefaultOutgoingAction: accept
     hostname: terraform.example.tld
     networkInterface:
     - networkSelector:

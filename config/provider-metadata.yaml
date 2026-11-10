@@ -1653,6 +1653,8 @@ resources:
             backup_hour: (Number) The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
             backup_minute: (Number) The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
             binlog_retention_period: '(Number) The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step.'
+            clone_from: (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+            clone_time: (String) Point in time, in RFC 3339 format (e.g. 2026-01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
             component: (String) Component name.
             components: (Attributes List) Service component information (see below for nested schema)
             connect_timeout: (Number) The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
@@ -1808,6 +1810,8 @@ resources:
             cancellation_ratio: (Number) The maximum number of tasks to cancel. The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
             client_id: (String) The ID of the OpenID Connect client. The ID of the OpenID Connect client configured in your IdP. Required.
             client_secret: (String) The client secret of the OpenID Connect. The client secret of the OpenID Connect client configured in your IdP. Required.
+            clone_from: (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+            clone_time: (String) Point in time, in RFC 3339 format (e.g. 2026-01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
             cluster_filecache_remote_data_ratio: (Number) The limit of how much total remote data can be referenced. Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
             cluster_max_shards_per_node: (Number) Controls the number of shards allowed in the cluster per data node.
             cluster_remote_store: (Block List) (see below for nested schema)
@@ -2092,6 +2096,8 @@ resources:
             bgwriter_flush_after: (Number) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is 512.
             bgwriter_lru_maxpages: (Number) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is 100.
             bgwriter_lru_multiplier: (Number) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+            clone_from: (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+            clone_time: (String) Point in time, in RFC 3339 format (e.g. 2026-01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
             component: (String) Component name.
             components: (Attributes List) Service component information (see below for nested schema)
             dbname: (String) Database name for bootstrapping the initial connection.
@@ -2308,6 +2314,8 @@ resources:
             automatic_utility_network_ip_filter: (Boolean) Automatic utility network IP Filter. Automatically allow connections from servers in the utility network within the same zone.
             backup_hour: (Number) The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
             backup_minute: (Number) The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+            clone_from: (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+            clone_time: (String) Point in time, in RFC 3339 format (e.g. 2026-01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
             component: (String) Component name.
             components: (Attributes List) Service component information (see below for nested schema)
             dbname: (String) Database name for bootstrapping the initial connection.
@@ -2874,7 +2882,10 @@ resources:
                 Please note that before the resize attempt is made, backup of the storage will be taken. If the resize attempt fails, the backup will be used
                 to restore the storage and then deleted. If the resize attempt succeeds, backup will be kept (unless delete_autoresize_backup option is set to true).
                 Taking and keeping backups incure costs.
-            firewall: (Boolean) Are firewall rules active for the server
+            firewall: (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+            firewall_private: (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+            firewall_private_default_incoming_action: (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+            firewall_private_default_outgoing_action: (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
             host: (Number) Use this to start the VM on a specific host. Refers to value from host -attribute. Only available for private cloud hosts
             hostname: (String) The hostname of the server.
             hot_resize: (Boolean) If set to true, allows changing the server plan without requiring a reboot. This enables hot resizing of the server. If hot resizing fails, the apply operation will fail.
@@ -2954,7 +2965,7 @@ resources:
             - terraform import upcloud_server_group.main ead4544f-10bf-42a3-b98a-a0fea2e2ad14
     upcloud_server_private_firewall_ruleset:
         subCategory: Servers
-        description: This resource represents an attachment of an UpCloud SDN private firewall ruleset to a server.
+        description: This resource represents an attachment of an UpCloud SDN private firewall ruleset to a server. Enable private filtering with firewall_private on upcloud_server and enable the ruleset with enabled. The server defaults control unmatched private traffic. Attachment occurs after server creation, so the intended policy is not guaranteed from first boot; restrictive defaults can block traffic until the ruleset is attached.
         name: upcloud_server_private_firewall_ruleset
         title: upcloud_server_private_firewall_ruleset Resource - terraform-provider-upcloud
         examples:
@@ -2971,6 +2982,7 @@ resources:
                 upcloud_firewall_ruleset.example: |-
                     {
                       "description": "Private SDN ruleset",
+                      "enabled": true,
                       "name": "example-private-ruleset",
                       "rules": [
                         {
@@ -2998,6 +3010,9 @@ resources:
                     }
                 upcloud_server.example: |-
                     {
+                      "firewall_private": true,
+                      "firewall_private_default_incoming_action": "drop",
+                      "firewall_private_default_outgoing_action": "accept",
                       "hostname": "terraform.example.tld",
                       "network_interface": [
                         {

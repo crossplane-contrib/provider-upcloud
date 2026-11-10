@@ -656,6 +656,14 @@ type ManagedDatabaseOpensearchInitParameters struct {
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
+
 	// level _mget, _msearch and _bulk APIs. Users are limited to perform operations on indices based on the user-specific access control rules.
 	// Grant access to top-level `_mget`, `_msearch` and `_bulk` APIs. Users are limited to perform operations on indices based on the user-specific access control rules.
 	ExtendedAccessControl *bool `json:"extendedAccessControl,omitempty" tf:"extended_access_control,omitempty"`
@@ -816,6 +824,14 @@ type ManagedDatabaseOpensearchObservation struct {
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
 
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
+
 	// (Attributes List) Service component information (see below for nested schema)
 	Components []ManagedDatabaseOpensearchComponentsObservation `json:"components,omitempty" tf:"components,omitempty"`
 
@@ -910,6 +926,16 @@ type ManagedDatabaseOpensearchParameters struct {
 	// Additional disk space in GiB. Note that changes in additional disk space might require disk maintenance. This pending maintenance blocks some operations, such as version upgrades, until the maintenance is completed.
 	// +kubebuilder:validation:Optional
 	AdditionalDiskSpaceGib *float64 `json:"additionalDiskSpaceGib,omitempty" tf:"additional_disk_space_gib,omitempty"`
+
+	// (String) UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// UUID of an existing managed database to clone the new database from. Changing this forces a new resource to be created. This value is only used on creation and is not read back from the API.
+	// +kubebuilder:validation:Optional
+	CloneFrom *string `json:"cloneFrom,omitempty" tf:"clone_from,omitempty"`
+
+	// 01-02T15:04:05Z), from which to clone the data. If not set, the most recent available data is used. Requires clone_from. Changing this forces a new resource to be created.
+	// Point in time, in RFC 3339 format (e.g. `2026-01-02T15:04:05Z`), from which to clone the data. If not set, the most recent available data is used. Requires `clone_from`. Changing this forces a new resource to be created.
+	// +kubebuilder:validation:Optional
+	CloneTime *string `json:"cloneTime,omitempty" tf:"clone_time,omitempty"`
 
 	// level _mget, _msearch and _bulk APIs. Users are limited to perform operations on indices based on the user-specific access control rules.
 	// Grant access to top-level `_mget`, `_msearch` and `_bulk` APIs. Users are limited to perform operations on indices based on the user-specific access control rules.

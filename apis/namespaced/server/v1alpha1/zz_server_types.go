@@ -310,9 +310,21 @@ type ServerInitParameters struct {
 	// The number of CPU cores for the server
 	CPU *float64 `json:"cpu,omitempty" tf:"cpu,omitempty"`
 
-	// (Boolean) Are firewall rules active for the server
-	// Are firewall rules active for the server
+	// (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+	// Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
 	Firewall *bool `json:"firewall,omitempty" tf:"firewall,omitempty"`
+
+	// (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	// Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	FirewallPrivate *bool `json:"firewallPrivate,omitempty" tf:"firewall_private,omitempty"`
+
+	// (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+	// Default action for unmatched incoming private SDN traffic (accept or drop).
+	FirewallPrivateDefaultIncomingAction *string `json:"firewallPrivateDefaultIncomingAction,omitempty" tf:"firewall_private_default_incoming_action,omitempty"`
+
+	// (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+	// Default action for unmatched outgoing private SDN traffic (accept or drop).
+	FirewallPrivateDefaultOutgoingAction *string `json:"firewallPrivateDefaultOutgoingAction,omitempty" tf:"firewall_private_default_outgoing_action,omitempty"`
 
 	// attribute. Only available for private cloud hosts
 	// Use this to start the VM on a specific host. Refers to value from host -attribute. Only available for private cloud hosts
@@ -413,9 +425,21 @@ type ServerObservation struct {
 	// The number of CPU cores for the server
 	CPU *float64 `json:"cpu,omitempty" tf:"cpu,omitempty"`
 
-	// (Boolean) Are firewall rules active for the server
-	// Are firewall rules active for the server
+	// (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+	// Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
 	Firewall *bool `json:"firewall,omitempty" tf:"firewall,omitempty"`
+
+	// (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	// Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	FirewallPrivate *bool `json:"firewallPrivate,omitempty" tf:"firewall_private,omitempty"`
+
+	// (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+	// Default action for unmatched incoming private SDN traffic (accept or drop).
+	FirewallPrivateDefaultIncomingAction *string `json:"firewallPrivateDefaultIncomingAction,omitempty" tf:"firewall_private_default_incoming_action,omitempty"`
+
+	// (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+	// Default action for unmatched outgoing private SDN traffic (accept or drop).
+	FirewallPrivateDefaultOutgoingAction *string `json:"firewallPrivateDefaultOutgoingAction,omitempty" tf:"firewall_private_default_outgoing_action,omitempty"`
 
 	// attribute. Only available for private cloud hosts
 	// Use this to start the VM on a specific host. Refers to value from host -attribute. Only available for private cloud hosts
@@ -521,10 +545,25 @@ type ServerParameters struct {
 	// +kubebuilder:validation:Optional
 	CPU *float64 `json:"cpu,omitempty" tf:"cpu,omitempty"`
 
-	// (Boolean) Are firewall rules active for the server
-	// Are firewall rules active for the server
+	// (Boolean) Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
+	// Whether the Public & Utility firewall is active for public and utility interfaces. Independent of firewall_private.
 	// +kubebuilder:validation:Optional
 	Firewall *bool `json:"firewall,omitempty" tf:"firewall,omitempty"`
+
+	// (Boolean) Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	// Whether the private SDN firewall is active for private interfaces. Independent of firewall. Private firewall settings are applied after the server starts; attached rulesets are managed with upcloud_server_private_firewall_ruleset. Protection from the first boot is not guaranteed.
+	// +kubebuilder:validation:Optional
+	FirewallPrivate *bool `json:"firewallPrivate,omitempty" tf:"firewall_private,omitempty"`
+
+	// (String) Default action for unmatched incoming private SDN traffic (accept or drop).
+	// Default action for unmatched incoming private SDN traffic (accept or drop).
+	// +kubebuilder:validation:Optional
+	FirewallPrivateDefaultIncomingAction *string `json:"firewallPrivateDefaultIncomingAction,omitempty" tf:"firewall_private_default_incoming_action,omitempty"`
+
+	// (String) Default action for unmatched outgoing private SDN traffic (accept or drop).
+	// Default action for unmatched outgoing private SDN traffic (accept or drop).
+	// +kubebuilder:validation:Optional
+	FirewallPrivateDefaultOutgoingAction *string `json:"firewallPrivateDefaultOutgoingAction,omitempty" tf:"firewall_private_default_outgoing_action,omitempty"`
 
 	// attribute. Only available for private cloud hosts
 	// Use this to start the VM on a specific host. Refers to value from host -attribute. Only available for private cloud hosts

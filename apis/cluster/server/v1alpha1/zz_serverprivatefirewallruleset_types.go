@@ -114,7 +114,7 @@ type ServerPrivateFirewallRulesetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ServerPrivateFirewallRuleset is the Schema for the ServerPrivateFirewallRulesets API. This resource represents an attachment of an UpCloud SDN private firewall ruleset to a server.
+// ServerPrivateFirewallRuleset is the Schema for the ServerPrivateFirewallRulesets API. This resource represents an attachment of an UpCloud SDN private firewall ruleset to a server. Enable private filtering with firewall_private on upcloud_server and enable the ruleset with enabled. The server defaults control unmatched private traffic. Attachment occurs after server creation, so the intended policy is not guaranteed from first boot; restrictive defaults can block traffic until the ruleset is attached.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
